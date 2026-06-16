@@ -20,18 +20,13 @@
         </select>
       </div>
       <div class="field">
-        <label for="questionnaire">Questionnaire</label>
-        <select id="questionnaire" [ngModel]="selectedQuestionnaireId()" (ngModelChange)="selectedQuestionnaireId.set(+$event || null)">
-          <option [value]="null">Select questionnaire</option>
-          @for (questionnaire of questionnaires(); track questionnaire.questionnaireId) {
-            <option [value]="questionnaire.questionnaireId">{{ questionnaire.title }}</option>
-          }
-        </select>
+        <label>Questionnaire</label>
+        <div class="readonly-value">{{ seededQuestionnaireTitle() }}</div>
       </div>
     </div>
 
     <div class="actions">
-      <button type="button" class="button" (click)="assignQuestionnaire()">Assign Questionnaire</button>
+      <button type="button" class="button" [disabled]="!seededQuestionnaire()" (click)="assignQuestionnaire()">Assign Questionnaire</button>
       <button type="button" class="button secondary" (click)="loadLookups()">Refresh</button>
     </div>
 

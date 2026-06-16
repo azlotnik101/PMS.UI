@@ -27,7 +27,6 @@ export class AssignmentRunnerComponent implements OnInit {
   readonly questionnaires = signal<QuestionnaireDto[]>([]);
   readonly assignments = signal<QuestionnaireAssignmentDto[]>([]);
   readonly selectedParticipantId = signal<number | null>(null);
-  readonly selectedQuestionnaireId = signal<number | null>(null);
   readonly selectedAssignment = signal<QuestionnaireAssignmentDto | null>(null);
   readonly answers = signal<Record<number, AnswerValue>>({});
   readonly loading = signal(false);
@@ -39,6 +38,8 @@ export class AssignmentRunnerComponent implements OnInit {
     const questionnaire = this.activeQuestionnaire();
     return (questionnaire?.questions ?? []).slice().sort((left, right) => left.displayOrder - right.displayOrder);
   });
+  readonly seededQuestionnaire = computed(() => this.questionnaires()[0] ?? null);
+  readonly seededQuestionnaireTitle = computed(() => this.seededQuestionnaire()?.title ?? 'Not seeded');
 
   ngOnInit(): void {
     this.loadLookups();
@@ -53,6 +54,9 @@ export class AssignmentRunnerComponent implements OnInit {
       next: ({ participants, questionnaires }) => {
         this.participants.set(participants);
         this.questionnaires.set(questionnaires);
+        if (questionnaires.length === 0) {
+          this.error.set('No questionnaire found. Run Scripts/SeedQuestionnairePocData.sql against the PMS database.');
+        }
         this.loading.set(false);
       },
       error: () => {
@@ -81,9 +85,9 @@ export class AssignmentRunnerComponent implements OnInit {
 
   assignQuestionnaire(): void {
     const participantId = this.selectedParticipantId();
-    const questionnaireId = this.selectedQuestionnaireId();
+    const questionnaireId = this.seededQuestionnaire()?.questionnaireId ?? null;
     if (!participantId || !questionnaireId) {
-      this.error.set('Select a participant and questionnaire before assigning.');
+      this.error.set('Select a participant after seeding the questionnaire.');
       return;
     }
 

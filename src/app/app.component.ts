@@ -23,7 +23,7 @@ type AppTab = 'questionnaires' | 'participants' | 'assignments' | 'audit';
 export class AppComponent {
   readonly activeTab = signal<AppTab>('questionnaires');
   readonly tabs: { id: AppTab; label: string }[] = [
-    { id: 'questionnaires', label: 'Questionnaires' },
+    { id: 'questionnaires', label: 'Questionnaire' },
     { id: 'participants', label: 'Participants' },
     { id: 'assignments', label: 'Assignments' },
     { id: 'audit', label: 'Audit Log' }

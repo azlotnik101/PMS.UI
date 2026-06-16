@@ -10,8 +10,7 @@ import {
   QuestionResponseCreateRequest,
   QuestionnaireAssignmentCreateRequest,
   QuestionnaireAssignmentDto,
-  QuestionnaireDto,
-  QuestionnaireRequest
+  QuestionnaireDto
 } from '../models/pms-api.models';
 
 @Injectable({ providedIn: 'root' })
@@ -25,18 +24,6 @@ export class PmsApiService {
 
   getQuestionnaire(questionnaireId: number): Observable<QuestionnaireDto> {
     return this.http.get<QuestionnaireDto>(`${this.baseUrl}/api/Questionnaires/${questionnaireId}`);
-  }
-
-  createQuestionnaire(request: QuestionnaireRequest): Observable<QuestionnaireDto> {
-    return this.http.post<QuestionnaireDto>(`${this.baseUrl}/api/Questionnaires`, request);
-  }
-
-  updateQuestionnaire(questionnaireId: number, request: QuestionnaireRequest): Observable<QuestionnaireDto> {
-    return this.http.put<QuestionnaireDto>(`${this.baseUrl}/api/Questionnaires/${questionnaireId}`, request);
-  }
-
-  deleteQuestionnaire(questionnaireId: number): Observable<void> {
-    return this.http.delete<void>(`${this.baseUrl}/api/Questionnaires/${questionnaireId}`);
   }
 
   getParticipants(): Observable<ParticipantDto[]> {

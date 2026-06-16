@@ -1,125 +1,45 @@
-<div class="grid">
-  <section class="panel">
-    <div class="section-heading">
-      <div>
-        <h2>Questionnaire Administration</h2>
-        <p class="muted">Create or update questionnaires with numeric, text, single-select, and multi-select questions.</p>
-      </div>
-      <button type="button" class="button secondary" (click)="newQuestionnaire()">New</button>
+<section class="panel">
+  <div class="section-heading">
+    <div>
+      <h2>Seeded Questionnaire</h2>
+      <p class="muted">Questions are managed by the database seed script, not by this UI.</p>
     </div>
+    <button type="button" class="button secondary" (click)="loadQuestionnaire()">Refresh</button>
+  </div>
 
-    @if (loading()) {
-      <p class="muted">Loading questionnaires...</p>
-    }
+  @if (loading()) {
+    <p class="muted">Loading questionnaire...</p>
+  }
+  @if (error()) {
+    <p class="error">{{ error() }}</p>
+  }
 
-    <div class="list">
-      @for (questionnaire of questionnaires(); track questionnaire.questionnaireId) {
-        <article class="list-item" [class.selected]="selectedId() === questionnaire.questionnaireId">
-          <button type="button" class="select-link" (click)="selectQuestionnaire(questionnaire)">
-            {{ questionnaire.title }}
-          </button>
-          <p class="muted">{{ questionnaire.questions?.length ?? 0 }} questions</p>
-        </article>
-      } @empty {
-        <p class="muted">No questionnaires yet.</p>
-      }
-    </div>
-  </section>
-
-  <section class="panel">
-    <div class="section-heading">
-      <h2>{{ isEditing() ? 'Update Questionnaire' : 'Create Questionnaire' }}</h2>
-      <button type="button" class="button secondary" (click)="seedOnlineSurvey()">Load POC Sample</button>
-    </div>
-
-    @if (error()) {
-      <p class="error">{{ error() }}</p>
-    }
-    @if (success()) {
-      <p class="success">{{ success() }}</p>
-    }
-
-    <div class="field">
-      <label for="questionnaire-title">Title</label>
-      <input id="questionnaire-title" [(ngModel)]="draft().title" placeholder="Online Usage Survey">
+  @if (questionnaire()) {
+    <div class="questionnaire-summary">
+      <h3>{{ questionnaire()?.title }}</h3>
+      <p class="muted">{{ questions().length }} seeded questions</p>
     </div>
 
     <div class="questions">
-      @for (question of draft().questions; track $index; let questionIndex = $index) {
-        <article class="question-editor">
+      @for (question of questions(); track question.questionId) {
+        <article class="question-view">
           <div class="question-header">
-            <h3>Question {{ questionIndex + 1 }}</h3>
-            <button type="button" class="button danger" (click)="removeQuestion(questionIndex)">Remove</button>
+            <div>
+              <h3>{{ question.displayOrder }}. {{ question.text }}</h3>
+              <p class="muted">{{ dependencyText(question) }}</p>
+            </div>
+            <span class="type-pill">{{ questionTypeLabel(question.questionType) }}</span>
           </div>
 
-          <div class="form-grid">
-            <div class="field full">
-              <label>Question text</label>
-              <textarea [(ngModel)]="question.text"></textarea>
-            </div>
-            <div class="field">
-              <label>Question type</label>
-              <select [ngModel]="question.questionType" (ngModelChange)="updateQuestionType(question, $event)">
-                @for (type of questionTypes; track type.value) {
-                  <option [value]="type.value">{{ type.label }}</option>
-                }
-              </select>
-            </div>
-            <div class="field">
-              <label>Display order</label>
-              <input type="number" min="1" [(ngModel)]="question.displayOrder">
-            </div>
-            <div class="field">
-              <label>Depends on question</label>
-              <select [(ngModel)]="question.parentQuestionId">
-                <option [ngValue]="null">Always show</option>
-                @for (parent of draft().questions; track $index) {
-                  @if (parent !== question && parent.questionId) {
-                    <option [ngValue]="parent.questionId">{{ parent.text || 'Untitled question' }}</option>
-                  }
-                }
-              </select>
-            </div>
-            <div class="field">
-              <label>Depends on answer</label>
-              <select [(ngModel)]="question.parentChoiceId" [disabled]="!question.parentQuestionId">
-                <option [ngValue]="null">Any answer</option>
-                @for (choice of parentChoices(question); track $index) {
-                  @if (choice.selectableQuestionChoiceId) {
-                    <option [ngValue]="choice.selectableQuestionChoiceId">{{ choice.choiceText }}</option>
-                  }
-                }
-              </select>
-            </div>
-          </div>
-
-          @if (hasChoices(question)) {
+          @if (question.choices?.length) {
             <div class="option-list">
-              <div class="option-heading">
-                <h4>Selectable values</h4>
-                <button type="button" class="button secondary" (click)="addChoice(question)">Add option</button>
-              </div>
-              @for (choice of question.choices; track $index; let choiceIndex = $index) {
-                <div class="option-row">
-                  <input [(ngModel)]="choice.choiceText" placeholder="Option text">
-                  <input type="number" min="1" [(ngModel)]="choice.displayOrder" aria-label="Option display order">
-                  <button type="button" class="button danger" (click)="removeChoice(question, choiceIndex)">Remove</button>
-                </div>
+              @for (choice of question.choices; track choice.selectableQuestionChoiceId) {
+                <span>{{ choice.choiceText }}</span>
               }
             </div>
           }
         </article>
       }
     </div>
-
-    <div class="actions">
-      <button type="button" class="button secondary" (click)="addQuestion()">Add Question</button>
-      <button type="button" class="button" [disabled]="saving()" (click)="saveQuestionnaire()">
-        {{ saving() ? 'Saving...' : 'Save Questionnaire' }}
-      </button>
-      @if (isEditing()) {
-        <button type="button" class="button danger" (click)="deleteSelected()">Delete</button>
-      }
-    </div>
-  </section>
-</div>
+  }
+</section>

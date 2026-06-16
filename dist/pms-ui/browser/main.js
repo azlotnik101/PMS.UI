@@ -40067,15 +40067,6 @@ var PmsApiService = class _PmsApiService {
   getQuestionnaire(questionnaireId) {
     return this.http.get(`${this.baseUrl}/api/Questionnaires/${questionnaireId}`);
   }
-  createQuestionnaire(request) {
-    return this.http.post(`${this.baseUrl}/api/Questionnaires`, request);
-  }
-  updateQuestionnaire(questionnaireId, request) {
-    return this.http.put(`${this.baseUrl}/api/Questionnaires/${questionnaireId}`, request);
-  }
-  deleteQuestionnaire(questionnaireId) {
-    return this.http.delete(`${this.baseUrl}/api/Questionnaires/${questionnaireId}`);
-  }
   getParticipants() {
     return this.http.get(`${this.baseUrl}/api/Participants`);
   }
@@ -40121,10 +40112,9 @@ var PmsApiService = class _PmsApiService {
 // src/app/features/assignment-runner/assignment-runner.component.ts
 var _c0 = () => [];
 var _forTrack0 = ($index, $item) => $item.participantId;
-var _forTrack1 = ($index, $item) => $item.questionnaireId;
-var _forTrack2 = ($index, $item) => $item.questionnaireAssignmentId;
-var _forTrack3 = ($index, $item) => $item.questionId;
-var _forTrack4 = ($index, $item) => $item.selectableQuestionChoiceId;
+var _forTrack1 = ($index, $item) => $item.questionnaireAssignmentId;
+var _forTrack2 = ($index, $item) => $item.questionId;
+var _forTrack3 = ($index, $item) => $item.selectableQuestionChoiceId;
 function AssignmentRunnerComponent_Conditional_4_Template(rf, ctx) {
   if (rf & 1) {
     \u0275\u0275elementStart(0, "p", 2);
@@ -40162,213 +40152,200 @@ function AssignmentRunnerComponent_For_14_Template(rf, ctx) {
     \u0275\u0275textInterpolate2("", participant_r2.firstName, " ", participant_r2.lastName);
   }
 }
-function AssignmentRunnerComponent_For_22_Template(rf, ctx) {
+function AssignmentRunnerComponent_For_29_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "option", 8);
-    \u0275\u0275text(1);
-    \u0275\u0275elementEnd();
-  }
-  if (rf & 2) {
-    const questionnaire_r3 = ctx.$implicit;
-    \u0275\u0275property("value", questionnaire_r3.questionnaireId);
-    \u0275\u0275advance();
-    \u0275\u0275textInterpolate(questionnaire_r3.title);
-  }
-}
-function AssignmentRunnerComponent_For_32_Template(rf, ctx) {
-  if (rf & 1) {
-    const _r4 = \u0275\u0275getCurrentView();
-    \u0275\u0275elementStart(0, "article", 17)(1, "button", 18);
-    \u0275\u0275listener("click", function AssignmentRunnerComponent_For_32_Template_button_click_1_listener() {
-      const assignment_r5 = \u0275\u0275restoreView(_r4).$implicit;
+    const _r3 = \u0275\u0275getCurrentView();
+    \u0275\u0275elementStart(0, "article", 16)(1, "button", 17);
+    \u0275\u0275listener("click", function AssignmentRunnerComponent_For_29_Template_button_click_1_listener() {
+      const assignment_r4 = \u0275\u0275restoreView(_r3).$implicit;
       const ctx_r0 = \u0275\u0275nextContext();
-      return \u0275\u0275resetView(ctx_r0.selectAssignment(assignment_r5));
+      return \u0275\u0275resetView(ctx_r0.selectAssignment(assignment_r4));
     });
     \u0275\u0275text(2);
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(3, "p", 16);
+    \u0275\u0275elementStart(3, "p", 15);
     \u0275\u0275text(4);
     \u0275\u0275pipe(5, "date");
     \u0275\u0275elementEnd()();
   }
   if (rf & 2) {
     let tmp_10_0;
-    const assignment_r5 = ctx.$implicit;
+    const assignment_r4 = ctx.$implicit;
     const ctx_r0 = \u0275\u0275nextContext();
-    \u0275\u0275classProp("selected", ((tmp_10_0 = ctx_r0.selectedAssignment()) == null ? null : tmp_10_0.questionnaireAssignmentId) === assignment_r5.questionnaireAssignmentId);
+    \u0275\u0275classProp("selected", ((tmp_10_0 = ctx_r0.selectedAssignment()) == null ? null : tmp_10_0.questionnaireAssignmentId) === assignment_r4.questionnaireAssignmentId);
     \u0275\u0275advance(2);
-    \u0275\u0275textInterpolate1(" ", (assignment_r5.questionnaire == null ? null : assignment_r5.questionnaire.title) ?? "Questionnaire #" + assignment_r5.questionnaireId, " ");
+    \u0275\u0275textInterpolate1(" ", (assignment_r4.questionnaire == null ? null : assignment_r4.questionnaire.title) ?? "Questionnaire #" + assignment_r4.questionnaireId, " ");
     \u0275\u0275advance(2);
-    \u0275\u0275textInterpolate2(" Assigned ", \u0275\u0275pipeBind2(5, 5, assignment_r5.assignedDate, "mediumDate"), " - ", assignment_r5.completed ? "Completed" : "Open", " ");
+    \u0275\u0275textInterpolate2(" Assigned ", \u0275\u0275pipeBind2(5, 5, assignment_r4.assignedDate, "mediumDate"), " - ", assignment_r4.completed ? "Completed" : "Open", " ");
   }
 }
-function AssignmentRunnerComponent_ForEmpty_33_Template(rf, ctx) {
+function AssignmentRunnerComponent_ForEmpty_30_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "p", 16);
+    \u0275\u0275elementStart(0, "p", 15);
     \u0275\u0275text(1, "Select a participant to see assignments.");
     \u0275\u0275elementEnd();
   }
 }
-function AssignmentRunnerComponent_Conditional_37_For_4_Conditional_0_Case_6_Template(rf, ctx) {
+function AssignmentRunnerComponent_Conditional_34_For_4_Conditional_0_Case_6_Template(rf, ctx) {
   if (rf & 1) {
-    const _r7 = \u0275\u0275getCurrentView();
-    \u0275\u0275elementStart(0, "input", 26);
-    \u0275\u0275listener("ngModelChange", function AssignmentRunnerComponent_Conditional_37_For_4_Conditional_0_Case_6_Template_input_ngModelChange_0_listener($event) {
-      \u0275\u0275restoreView(_r7);
-      const question_r8 = \u0275\u0275nextContext(2).$implicit;
+    const _r6 = \u0275\u0275getCurrentView();
+    \u0275\u0275elementStart(0, "input", 24);
+    \u0275\u0275listener("ngModelChange", function AssignmentRunnerComponent_Conditional_34_For_4_Conditional_0_Case_6_Template_input_ngModelChange_0_listener($event) {
+      \u0275\u0275restoreView(_r6);
+      const question_r7 = \u0275\u0275nextContext(2).$implicit;
       const ctx_r0 = \u0275\u0275nextContext(2);
-      return \u0275\u0275resetView(ctx_r0.setAnswer(question_r8.questionId, +$event));
+      return \u0275\u0275resetView(ctx_r0.setAnswer(question_r7.questionId, +$event));
     });
     \u0275\u0275elementEnd();
   }
   if (rf & 2) {
-    const question_r8 = \u0275\u0275nextContext(2).$implicit;
+    const question_r7 = \u0275\u0275nextContext(2).$implicit;
     const ctx_r0 = \u0275\u0275nextContext(2);
-    \u0275\u0275property("ngModel", ctx_r0.answers()[question_r8.questionId]);
+    \u0275\u0275property("ngModel", ctx_r0.answers()[question_r7.questionId]);
   }
 }
-function AssignmentRunnerComponent_Conditional_37_For_4_Conditional_0_Case_7_Template(rf, ctx) {
+function AssignmentRunnerComponent_Conditional_34_For_4_Conditional_0_Case_7_Template(rf, ctx) {
+  if (rf & 1) {
+    const _r8 = \u0275\u0275getCurrentView();
+    \u0275\u0275elementStart(0, "textarea", 25);
+    \u0275\u0275listener("ngModelChange", function AssignmentRunnerComponent_Conditional_34_For_4_Conditional_0_Case_7_Template_textarea_ngModelChange_0_listener($event) {
+      \u0275\u0275restoreView(_r8);
+      const question_r7 = \u0275\u0275nextContext(2).$implicit;
+      const ctx_r0 = \u0275\u0275nextContext(2);
+      return \u0275\u0275resetView(ctx_r0.setAnswer(question_r7.questionId, $event));
+    });
+    \u0275\u0275elementEnd();
+  }
+  if (rf & 2) {
+    const question_r7 = \u0275\u0275nextContext(2).$implicit;
+    const ctx_r0 = \u0275\u0275nextContext(2);
+    \u0275\u0275property("ngModel", ctx_r0.answers()[question_r7.questionId]);
+  }
+}
+function AssignmentRunnerComponent_Conditional_34_For_4_Conditional_0_Case_8_For_2_Template(rf, ctx) {
   if (rf & 1) {
     const _r9 = \u0275\u0275getCurrentView();
-    \u0275\u0275elementStart(0, "textarea", 27);
-    \u0275\u0275listener("ngModelChange", function AssignmentRunnerComponent_Conditional_37_For_4_Conditional_0_Case_7_Template_textarea_ngModelChange_0_listener($event) {
+    \u0275\u0275elementStart(0, "label", 26)(1, "input", 27);
+    \u0275\u0275listener("ngModelChange", function AssignmentRunnerComponent_Conditional_34_For_4_Conditional_0_Case_8_For_2_Template_input_ngModelChange_1_listener($event) {
       \u0275\u0275restoreView(_r9);
-      const question_r8 = \u0275\u0275nextContext(2).$implicit;
+      const question_r7 = \u0275\u0275nextContext(3).$implicit;
       const ctx_r0 = \u0275\u0275nextContext(2);
-      return \u0275\u0275resetView(ctx_r0.setAnswer(question_r8.questionId, $event));
-    });
-    \u0275\u0275elementEnd();
-  }
-  if (rf & 2) {
-    const question_r8 = \u0275\u0275nextContext(2).$implicit;
-    const ctx_r0 = \u0275\u0275nextContext(2);
-    \u0275\u0275property("ngModel", ctx_r0.answers()[question_r8.questionId]);
-  }
-}
-function AssignmentRunnerComponent_Conditional_37_For_4_Conditional_0_Case_8_For_2_Template(rf, ctx) {
-  if (rf & 1) {
-    const _r10 = \u0275\u0275getCurrentView();
-    \u0275\u0275elementStart(0, "label", 28)(1, "input", 29);
-    \u0275\u0275listener("ngModelChange", function AssignmentRunnerComponent_Conditional_37_For_4_Conditional_0_Case_8_For_2_Template_input_ngModelChange_1_listener($event) {
-      \u0275\u0275restoreView(_r10);
-      const question_r8 = \u0275\u0275nextContext(3).$implicit;
-      const ctx_r0 = \u0275\u0275nextContext(2);
-      return \u0275\u0275resetView(ctx_r0.setAnswer(question_r8.questionId, +$event));
+      return \u0275\u0275resetView(ctx_r0.setAnswer(question_r7.questionId, +$event));
     });
     \u0275\u0275elementEnd();
     \u0275\u0275text(2);
     \u0275\u0275elementEnd();
   }
   if (rf & 2) {
-    const choice_r11 = ctx.$implicit;
-    const question_r8 = \u0275\u0275nextContext(3).$implicit;
+    const choice_r10 = ctx.$implicit;
+    const question_r7 = \u0275\u0275nextContext(3).$implicit;
     const ctx_r0 = \u0275\u0275nextContext(2);
     \u0275\u0275advance();
-    \u0275\u0275property("name", "question-" + question_r8.questionId)("ngModel", ctx_r0.answers()[question_r8.questionId])("value", choice_r11.selectableQuestionChoiceId);
+    \u0275\u0275property("name", "question-" + question_r7.questionId)("ngModel", ctx_r0.answers()[question_r7.questionId])("value", choice_r10.selectableQuestionChoiceId);
     \u0275\u0275advance();
-    \u0275\u0275textInterpolate1(" ", choice_r11.choiceText, " ");
+    \u0275\u0275textInterpolate1(" ", choice_r10.choiceText, " ");
   }
 }
-function AssignmentRunnerComponent_Conditional_37_For_4_Conditional_0_Case_8_Template(rf, ctx) {
+function AssignmentRunnerComponent_Conditional_34_For_4_Conditional_0_Case_8_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "div", 25);
-    \u0275\u0275repeaterCreate(1, AssignmentRunnerComponent_Conditional_37_For_4_Conditional_0_Case_8_For_2_Template, 3, 4, "label", 28, _forTrack4);
+    \u0275\u0275elementStart(0, "div", 23);
+    \u0275\u0275repeaterCreate(1, AssignmentRunnerComponent_Conditional_34_For_4_Conditional_0_Case_8_For_2_Template, 3, 4, "label", 26, _forTrack3);
     \u0275\u0275elementEnd();
   }
   if (rf & 2) {
-    const question_r8 = \u0275\u0275nextContext(2).$implicit;
+    const question_r7 = \u0275\u0275nextContext(2).$implicit;
     \u0275\u0275advance();
-    \u0275\u0275repeater(question_r8.choices ?? \u0275\u0275pureFunction0(0, _c0));
+    \u0275\u0275repeater(question_r7.choices ?? \u0275\u0275pureFunction0(0, _c0));
   }
 }
-function AssignmentRunnerComponent_Conditional_37_For_4_Conditional_0_Case_9_For_2_Template(rf, ctx) {
+function AssignmentRunnerComponent_Conditional_34_For_4_Conditional_0_Case_9_For_2_Template(rf, ctx) {
   if (rf & 1) {
-    const _r12 = \u0275\u0275getCurrentView();
-    \u0275\u0275elementStart(0, "label", 28)(1, "input", 30);
-    \u0275\u0275listener("change", function AssignmentRunnerComponent_Conditional_37_For_4_Conditional_0_Case_9_For_2_Template_input_change_1_listener($event) {
-      const choice_r13 = \u0275\u0275restoreView(_r12).$implicit;
-      const question_r8 = \u0275\u0275nextContext(3).$implicit;
+    const _r11 = \u0275\u0275getCurrentView();
+    \u0275\u0275elementStart(0, "label", 26)(1, "input", 28);
+    \u0275\u0275listener("change", function AssignmentRunnerComponent_Conditional_34_For_4_Conditional_0_Case_9_For_2_Template_input_change_1_listener($event) {
+      const choice_r12 = \u0275\u0275restoreView(_r11).$implicit;
+      const question_r7 = \u0275\u0275nextContext(3).$implicit;
       const ctx_r0 = \u0275\u0275nextContext(2);
-      return \u0275\u0275resetView(ctx_r0.toggleMulti(question_r8.questionId, choice_r13.selectableQuestionChoiceId, $event.target.checked));
+      return \u0275\u0275resetView(ctx_r0.toggleMulti(question_r7.questionId, choice_r12.selectableQuestionChoiceId, $event.target.checked));
     });
     \u0275\u0275elementEnd();
     \u0275\u0275text(2);
     \u0275\u0275elementEnd();
   }
   if (rf & 2) {
-    const choice_r13 = ctx.$implicit;
-    const question_r8 = \u0275\u0275nextContext(3).$implicit;
+    const choice_r12 = ctx.$implicit;
+    const question_r7 = \u0275\u0275nextContext(3).$implicit;
     const ctx_r0 = \u0275\u0275nextContext(2);
     \u0275\u0275advance();
-    \u0275\u0275property("checked", ctx_r0.isChoiceSelected(question_r8.questionId, choice_r13.selectableQuestionChoiceId));
+    \u0275\u0275property("checked", ctx_r0.isChoiceSelected(question_r7.questionId, choice_r12.selectableQuestionChoiceId));
     \u0275\u0275advance();
-    \u0275\u0275textInterpolate1(" ", choice_r13.choiceText, " ");
+    \u0275\u0275textInterpolate1(" ", choice_r12.choiceText, " ");
   }
 }
-function AssignmentRunnerComponent_Conditional_37_For_4_Conditional_0_Case_9_Template(rf, ctx) {
+function AssignmentRunnerComponent_Conditional_34_For_4_Conditional_0_Case_9_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "div", 25);
-    \u0275\u0275repeaterCreate(1, AssignmentRunnerComponent_Conditional_37_For_4_Conditional_0_Case_9_For_2_Template, 3, 2, "label", 28, _forTrack4);
+    \u0275\u0275elementStart(0, "div", 23);
+    \u0275\u0275repeaterCreate(1, AssignmentRunnerComponent_Conditional_34_For_4_Conditional_0_Case_9_For_2_Template, 3, 2, "label", 26, _forTrack3);
     \u0275\u0275elementEnd();
   }
   if (rf & 2) {
-    const question_r8 = \u0275\u0275nextContext(2).$implicit;
+    const question_r7 = \u0275\u0275nextContext(2).$implicit;
     \u0275\u0275advance();
-    \u0275\u0275repeater(question_r8.choices ?? \u0275\u0275pureFunction0(0, _c0));
+    \u0275\u0275repeater(question_r7.choices ?? \u0275\u0275pureFunction0(0, _c0));
   }
 }
-function AssignmentRunnerComponent_Conditional_37_For_4_Conditional_0_Template(rf, ctx) {
+function AssignmentRunnerComponent_Conditional_34_For_4_Conditional_0_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "article", 21)(1, "div", 22)(2, "strong");
+    \u0275\u0275elementStart(0, "article", 19)(1, "div", 20)(2, "strong");
     \u0275\u0275text(3);
     \u0275\u0275elementEnd();
     \u0275\u0275elementStart(4, "span");
     \u0275\u0275text(5);
     \u0275\u0275elementEnd()();
-    \u0275\u0275conditionalCreate(6, AssignmentRunnerComponent_Conditional_37_For_4_Conditional_0_Case_6_Template, 1, 1, "input", 23)(7, AssignmentRunnerComponent_Conditional_37_For_4_Conditional_0_Case_7_Template, 1, 1, "textarea", 24)(8, AssignmentRunnerComponent_Conditional_37_For_4_Conditional_0_Case_8_Template, 3, 1, "div", 25)(9, AssignmentRunnerComponent_Conditional_37_For_4_Conditional_0_Case_9_Template, 3, 1, "div", 25);
+    \u0275\u0275conditionalCreate(6, AssignmentRunnerComponent_Conditional_34_For_4_Conditional_0_Case_6_Template, 1, 1, "input", 21)(7, AssignmentRunnerComponent_Conditional_34_For_4_Conditional_0_Case_7_Template, 1, 1, "textarea", 22)(8, AssignmentRunnerComponent_Conditional_34_For_4_Conditional_0_Case_8_Template, 3, 1, "div", 23)(9, AssignmentRunnerComponent_Conditional_34_For_4_Conditional_0_Case_9_Template, 3, 1, "div", 23);
     \u0275\u0275elementEnd();
   }
   if (rf & 2) {
     let tmp_14_0;
-    const question_r8 = \u0275\u0275nextContext().$implicit;
+    const question_r7 = \u0275\u0275nextContext().$implicit;
     const ctx_r0 = \u0275\u0275nextContext(2);
     \u0275\u0275advance(3);
-    \u0275\u0275textInterpolate(question_r8.text);
+    \u0275\u0275textInterpolate(question_r7.text);
     \u0275\u0275advance(2);
-    \u0275\u0275textInterpolate(ctx_r0.questionTypeLabel(question_r8.questionType));
+    \u0275\u0275textInterpolate(ctx_r0.questionTypeLabel(question_r7.questionType));
     \u0275\u0275advance();
-    \u0275\u0275conditional((tmp_14_0 = question_r8.questionType) === ctx_r0.QuestionType.Numeric ? 6 : tmp_14_0 === ctx_r0.QuestionType.Text ? 7 : tmp_14_0 === ctx_r0.QuestionType.SingleSelect ? 8 : tmp_14_0 === ctx_r0.QuestionType.MultiSelect ? 9 : -1);
+    \u0275\u0275conditional((tmp_14_0 = question_r7.questionType) === ctx_r0.QuestionType.Numeric ? 6 : tmp_14_0 === ctx_r0.QuestionType.Text ? 7 : tmp_14_0 === ctx_r0.QuestionType.SingleSelect ? 8 : tmp_14_0 === ctx_r0.QuestionType.MultiSelect ? 9 : -1);
   }
 }
-function AssignmentRunnerComponent_Conditional_37_For_4_Template(rf, ctx) {
+function AssignmentRunnerComponent_Conditional_34_For_4_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275conditionalCreate(0, AssignmentRunnerComponent_Conditional_37_For_4_Conditional_0_Template, 10, 3, "article", 21);
+    \u0275\u0275conditionalCreate(0, AssignmentRunnerComponent_Conditional_34_For_4_Conditional_0_Template, 10, 3, "article", 19);
   }
   if (rf & 2) {
-    const question_r8 = ctx.$implicit;
+    const question_r7 = ctx.$implicit;
     const ctx_r0 = \u0275\u0275nextContext(2);
-    \u0275\u0275conditional(ctx_r0.isVisible(question_r8) ? 0 : -1);
+    \u0275\u0275conditional(ctx_r0.isVisible(question_r7) ? 0 : -1);
   }
 }
-function AssignmentRunnerComponent_Conditional_37_ForEmpty_5_Template(rf, ctx) {
+function AssignmentRunnerComponent_Conditional_34_ForEmpty_5_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "p", 16);
+    \u0275\u0275elementStart(0, "p", 15);
     \u0275\u0275text(1, "This assignment has no questions.");
     \u0275\u0275elementEnd();
   }
 }
-function AssignmentRunnerComponent_Conditional_37_Template(rf, ctx) {
+function AssignmentRunnerComponent_Conditional_34_Template(rf, ctx) {
   if (rf & 1) {
-    const _r6 = \u0275\u0275getCurrentView();
-    \u0275\u0275elementStart(0, "p", 16);
+    const _r5 = \u0275\u0275getCurrentView();
+    \u0275\u0275elementStart(0, "p", 15);
     \u0275\u0275text(1, "Answer visible questions. Conditional questions appear after their parent answer is selected.");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(2, "div", 19);
-    \u0275\u0275repeaterCreate(3, AssignmentRunnerComponent_Conditional_37_For_4_Template, 1, 1, null, null, _forTrack3, false, AssignmentRunnerComponent_Conditional_37_ForEmpty_5_Template, 2, 0, "p", 16);
+    \u0275\u0275elementStart(2, "div", 18);
+    \u0275\u0275repeaterCreate(3, AssignmentRunnerComponent_Conditional_34_For_4_Template, 1, 1, null, null, _forTrack2, false, AssignmentRunnerComponent_Conditional_34_ForEmpty_5_Template, 2, 0, "p", 15);
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(6, "div", 11)(7, "button", 20);
-    \u0275\u0275listener("click", function AssignmentRunnerComponent_Conditional_37_Template_button_click_7_listener() {
-      \u0275\u0275restoreView(_r6);
+    \u0275\u0275elementStart(6, "div", 10)(7, "button", 11);
+    \u0275\u0275listener("click", function AssignmentRunnerComponent_Conditional_34_Template_button_click_7_listener() {
+      \u0275\u0275restoreView(_r5);
       const ctx_r0 = \u0275\u0275nextContext();
       return \u0275\u0275resetView(ctx_r0.submitResponses());
     });
@@ -40385,9 +40362,9 @@ function AssignmentRunnerComponent_Conditional_37_Template(rf, ctx) {
     \u0275\u0275textInterpolate1(" ", ctx_r0.saving() ? "Saving..." : "Submit Responses", " ");
   }
 }
-function AssignmentRunnerComponent_Conditional_38_Template(rf, ctx) {
+function AssignmentRunnerComponent_Conditional_35_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "p", 16);
+    \u0275\u0275elementStart(0, "p", 15);
     \u0275\u0275text(1, "Select an assignment to collect responses.");
     \u0275\u0275elementEnd();
   }
@@ -40398,7 +40375,6 @@ var AssignmentRunnerComponent = class _AssignmentRunnerComponent {
   questionnaires = signal([], ...ngDevMode ? [{ debugName: "questionnaires" }] : []);
   assignments = signal([], ...ngDevMode ? [{ debugName: "assignments" }] : []);
   selectedParticipantId = signal(null, ...ngDevMode ? [{ debugName: "selectedParticipantId" }] : []);
-  selectedQuestionnaireId = signal(null, ...ngDevMode ? [{ debugName: "selectedQuestionnaireId" }] : []);
   selectedAssignment = signal(null, ...ngDevMode ? [{ debugName: "selectedAssignment" }] : []);
   answers = signal({}, ...ngDevMode ? [{ debugName: "answers" }] : []);
   loading = signal(false, ...ngDevMode ? [{ debugName: "loading" }] : []);
@@ -40409,6 +40385,8 @@ var AssignmentRunnerComponent = class _AssignmentRunnerComponent {
     const questionnaire = this.activeQuestionnaire();
     return (questionnaire?.questions ?? []).slice().sort((left, right) => left.displayOrder - right.displayOrder);
   }, ...ngDevMode ? [{ debugName: "selectedQuestions" }] : []);
+  seededQuestionnaire = computed(() => this.questionnaires()[0] ?? null, ...ngDevMode ? [{ debugName: "seededQuestionnaire" }] : []);
+  seededQuestionnaireTitle = computed(() => this.seededQuestionnaire()?.title ?? "Not seeded", ...ngDevMode ? [{ debugName: "seededQuestionnaireTitle" }] : []);
   ngOnInit() {
     this.loadLookups();
   }
@@ -40421,6 +40399,9 @@ var AssignmentRunnerComponent = class _AssignmentRunnerComponent {
       next: ({ participants, questionnaires }) => {
         this.participants.set(participants);
         this.questionnaires.set(questionnaires);
+        if (questionnaires.length === 0) {
+          this.error.set("No questionnaire found. Run Scripts/SeedQuestionnairePocData.sql against the PMS database.");
+        }
         this.loading.set(false);
       },
       error: () => {
@@ -40445,9 +40426,9 @@ var AssignmentRunnerComponent = class _AssignmentRunnerComponent {
   }
   assignQuestionnaire() {
     const participantId = this.selectedParticipantId();
-    const questionnaireId = this.selectedQuestionnaireId();
+    const questionnaireId = this.seededQuestionnaire()?.questionnaireId ?? null;
     if (!participantId || !questionnaireId) {
-      this.error.set("Select a participant and questionnaire before assigning.");
+      this.error.set("Select a participant after seeding the questionnaire.");
       return;
     }
     this.api.assignQuestionnaire({
@@ -40577,7 +40558,7 @@ var AssignmentRunnerComponent = class _AssignmentRunnerComponent {
   static \u0275fac = function AssignmentRunnerComponent_Factory(__ngFactoryType__) {
     return new (__ngFactoryType__ || _AssignmentRunnerComponent)();
   };
-  static \u0275cmp = /* @__PURE__ */ \u0275\u0275defineComponent({ type: _AssignmentRunnerComponent, selectors: [["app-assignment-runner"]], decls: 39, vars: 8, consts: [[1, "grid"], [1, "panel"], [1, "error"], [1, "success"], [1, "form-grid"], [1, "field"], ["for", "participant"], ["id", "participant", 3, "ngModelChange", "ngModel"], [3, "value"], ["for", "questionnaire"], ["id", "questionnaire", 3, "ngModelChange", "ngModel"], [1, "actions"], ["type", "button", 1, "button", 3, "click"], ["type", "button", 1, "button", "secondary", 3, "click"], [1, "list"], [1, "list-item", 3, "selected"], [1, "muted"], [1, "list-item"], ["type", "button", 1, "select-link", 3, "click"], [1, "response-list"], ["type", "button", 1, "button", 3, "click", "disabled"], [1, "response-question"], [1, "question-title"], ["type", "number", 3, "ngModel"], [3, "ngModel"], [1, "choice-stack"], ["type", "number", 3, "ngModelChange", "ngModel"], [3, "ngModelChange", "ngModel"], [1, "choice-label"], ["type", "radio", 3, "ngModelChange", "name", "ngModel", "value"], ["type", "checkbox", 3, "change", "checked"]], template: function AssignmentRunnerComponent_Template(rf, ctx) {
+  static \u0275cmp = /* @__PURE__ */ \u0275\u0275defineComponent({ type: _AssignmentRunnerComponent, selectors: [["app-assignment-runner"]], decls: 36, vars: 8, consts: [[1, "grid"], [1, "panel"], [1, "error"], [1, "success"], [1, "form-grid"], [1, "field"], ["for", "participant"], ["id", "participant", 3, "ngModelChange", "ngModel"], [3, "value"], [1, "readonly-value"], [1, "actions"], ["type", "button", 1, "button", 3, "click", "disabled"], ["type", "button", 1, "button", "secondary", 3, "click"], [1, "list"], [1, "list-item", 3, "selected"], [1, "muted"], [1, "list-item"], ["type", "button", 1, "select-link", 3, "click"], [1, "response-list"], [1, "response-question"], [1, "question-title"], ["type", "number", 3, "ngModel"], [3, "ngModel"], [1, "choice-stack"], ["type", "number", 3, "ngModelChange", "ngModel"], [3, "ngModelChange", "ngModel"], [1, "choice-label"], ["type", "radio", 3, "ngModelChange", "name", "ngModel", "value"], ["type", "checkbox", 3, "change", "checked"]], template: function AssignmentRunnerComponent_Template(rf, ctx) {
     if (rf & 1) {
       \u0275\u0275elementStart(0, "div", 0)(1, "section", 1)(2, "h2");
       \u0275\u0275text(3, "Questionnaire Assignment");
@@ -40596,40 +40577,34 @@ var AssignmentRunnerComponent = class _AssignmentRunnerComponent {
       \u0275\u0275elementEnd();
       \u0275\u0275repeaterCreate(13, AssignmentRunnerComponent_For_14_Template, 2, 3, "option", 8, _forTrack0);
       \u0275\u0275elementEnd()();
-      \u0275\u0275elementStart(15, "div", 5)(16, "label", 9);
+      \u0275\u0275elementStart(15, "div", 5)(16, "label");
       \u0275\u0275text(17, "Questionnaire");
       \u0275\u0275elementEnd();
-      \u0275\u0275elementStart(18, "select", 10);
-      \u0275\u0275listener("ngModelChange", function AssignmentRunnerComponent_Template_select_ngModelChange_18_listener($event) {
-        return ctx.selectedQuestionnaireId.set(+$event || null);
-      });
-      \u0275\u0275elementStart(19, "option", 8);
-      \u0275\u0275text(20, "Select questionnaire");
-      \u0275\u0275elementEnd();
-      \u0275\u0275repeaterCreate(21, AssignmentRunnerComponent_For_22_Template, 2, 2, "option", 8, _forTrack1);
+      \u0275\u0275elementStart(18, "div", 9);
+      \u0275\u0275text(19);
       \u0275\u0275elementEnd()()();
-      \u0275\u0275elementStart(23, "div", 11)(24, "button", 12);
-      \u0275\u0275listener("click", function AssignmentRunnerComponent_Template_button_click_24_listener() {
+      \u0275\u0275elementStart(20, "div", 10)(21, "button", 11);
+      \u0275\u0275listener("click", function AssignmentRunnerComponent_Template_button_click_21_listener() {
         return ctx.assignQuestionnaire();
       });
-      \u0275\u0275text(25, "Assign Questionnaire");
+      \u0275\u0275text(22, "Assign Questionnaire");
       \u0275\u0275elementEnd();
-      \u0275\u0275elementStart(26, "button", 13);
-      \u0275\u0275listener("click", function AssignmentRunnerComponent_Template_button_click_26_listener() {
+      \u0275\u0275elementStart(23, "button", 12);
+      \u0275\u0275listener("click", function AssignmentRunnerComponent_Template_button_click_23_listener() {
         return ctx.loadLookups();
       });
-      \u0275\u0275text(27, "Refresh");
+      \u0275\u0275text(24, "Refresh");
       \u0275\u0275elementEnd()();
-      \u0275\u0275elementStart(28, "h3");
-      \u0275\u0275text(29, "Assignments");
+      \u0275\u0275elementStart(25, "h3");
+      \u0275\u0275text(26, "Assignments");
       \u0275\u0275elementEnd();
-      \u0275\u0275elementStart(30, "div", 14);
-      \u0275\u0275repeaterCreate(31, AssignmentRunnerComponent_For_32_Template, 6, 8, "article", 15, _forTrack2, false, AssignmentRunnerComponent_ForEmpty_33_Template, 2, 0, "p", 16);
+      \u0275\u0275elementStart(27, "div", 13);
+      \u0275\u0275repeaterCreate(28, AssignmentRunnerComponent_For_29_Template, 6, 8, "article", 14, _forTrack1, false, AssignmentRunnerComponent_ForEmpty_30_Template, 2, 0, "p", 15);
       \u0275\u0275elementEnd()();
-      \u0275\u0275elementStart(34, "section", 1)(35, "h2");
-      \u0275\u0275text(36, "Response Collection");
+      \u0275\u0275elementStart(31, "section", 1)(32, "h2");
+      \u0275\u0275text(33, "Response Collection");
       \u0275\u0275elementEnd();
-      \u0275\u0275conditionalCreate(37, AssignmentRunnerComponent_Conditional_37_Template, 9, 3)(38, AssignmentRunnerComponent_Conditional_38_Template, 2, 0, "p", 16);
+      \u0275\u0275conditionalCreate(34, AssignmentRunnerComponent_Conditional_34_Template, 9, 3)(35, AssignmentRunnerComponent_Conditional_35_Template, 2, 0, "p", 15);
       \u0275\u0275elementEnd()();
     }
     if (rf & 2) {
@@ -40643,18 +40618,16 @@ var AssignmentRunnerComponent = class _AssignmentRunnerComponent {
       \u0275\u0275property("value", null);
       \u0275\u0275advance(2);
       \u0275\u0275repeater(ctx.participants());
-      \u0275\u0275advance(5);
-      \u0275\u0275property("ngModel", ctx.selectedQuestionnaireId());
-      \u0275\u0275advance();
-      \u0275\u0275property("value", null);
+      \u0275\u0275advance(6);
+      \u0275\u0275textInterpolate(ctx.seededQuestionnaireTitle());
       \u0275\u0275advance(2);
-      \u0275\u0275repeater(ctx.questionnaires());
-      \u0275\u0275advance(10);
+      \u0275\u0275property("disabled", !ctx.seededQuestionnaire());
+      \u0275\u0275advance(7);
       \u0275\u0275repeater(ctx.assignments());
       \u0275\u0275advance(6);
-      \u0275\u0275conditional(ctx.selectedAssignment() ? 37 : 38);
+      \u0275\u0275conditional(ctx.selectedAssignment() ? 34 : 35);
     }
-  }, dependencies: [CommonModule, FormsModule, NgSelectOption, \u0275NgSelectMultipleOption, DefaultValueAccessor, NumberValueAccessor, SelectControlValueAccessor, RadioControlValueAccessor, NgControlStatus, NgModel, DatePipe], styles: ["\n\nh3[_ngcontent-%COMP%] {\n  margin-top: 24px;\n}\n.select-link[_ngcontent-%COMP%] {\n  background: transparent;\n  border: 0;\n  color: #244260;\n  cursor: pointer;\n  font: inherit;\n  font-weight: 700;\n  padding: 0;\n  text-align: left;\n}\n.list-item[_ngcontent-%COMP%]   p[_ngcontent-%COMP%] {\n  margin: 6px 0 0;\n}\n.response-list[_ngcontent-%COMP%] {\n  display: grid;\n  gap: 14px;\n  margin-top: 16px;\n}\n.response-question[_ngcontent-%COMP%] {\n  border: 1px solid #d7dde8;\n  border-radius: 8px;\n  padding: 14px;\n}\n.question-title[_ngcontent-%COMP%] {\n  align-items: center;\n  display: flex;\n  gap: 10px;\n  justify-content: space-between;\n  margin-bottom: 12px;\n}\n.question-title[_ngcontent-%COMP%]   span[_ngcontent-%COMP%] {\n  background: #eef2f6;\n  border-radius: 999px;\n  color: #415165;\n  font-size: 0.78rem;\n  font-weight: 700;\n  padding: 5px 8px;\n}\n.choice-stack[_ngcontent-%COMP%] {\n  display: grid;\n  gap: 8px;\n}\n.choice-label[_ngcontent-%COMP%] {\n  align-items: center;\n  border: 1px solid #d7dde8;\n  border-radius: 6px;\n  color: #1f2937;\n  display: flex;\n  gap: 8px;\n  padding: 9px 10px;\n}\n.choice-label[_ngcontent-%COMP%]   input[_ngcontent-%COMP%] {\n  width: auto;\n}\n@media (max-width: 760px) {\n  .question-title[_ngcontent-%COMP%] {\n    align-items: flex-start;\n    flex-direction: column;\n  }\n}\n/*# sourceMappingURL=assignment-runner.component.css.map */"] });
+  }, dependencies: [CommonModule, FormsModule, NgSelectOption, \u0275NgSelectMultipleOption, DefaultValueAccessor, NumberValueAccessor, SelectControlValueAccessor, RadioControlValueAccessor, NgControlStatus, NgModel, DatePipe], styles: ["\n\nh3[_ngcontent-%COMP%] {\n  margin-top: 24px;\n}\n.select-link[_ngcontent-%COMP%] {\n  background: transparent;\n  border: 0;\n  color: #244260;\n  cursor: pointer;\n  font: inherit;\n  font-weight: 700;\n  padding: 0;\n  text-align: left;\n}\n.list-item[_ngcontent-%COMP%]   p[_ngcontent-%COMP%] {\n  margin: 6px 0 0;\n}\n.readonly-value[_ngcontent-%COMP%] {\n  align-items: center;\n  background: #f8fafc;\n  border: 1px solid #c7d2df;\n  border-radius: 6px;\n  color: #1f2937;\n  display: flex;\n  min-height: 38px;\n  padding: 8px 10px;\n}\n.response-list[_ngcontent-%COMP%] {\n  display: grid;\n  gap: 14px;\n  margin-top: 16px;\n}\n.response-question[_ngcontent-%COMP%] {\n  border: 1px solid #d7dde8;\n  border-radius: 8px;\n  padding: 14px;\n}\n.question-title[_ngcontent-%COMP%] {\n  align-items: center;\n  display: flex;\n  gap: 10px;\n  justify-content: space-between;\n  margin-bottom: 12px;\n}\n.question-title[_ngcontent-%COMP%]   span[_ngcontent-%COMP%] {\n  background: #eef2f6;\n  border-radius: 999px;\n  color: #415165;\n  font-size: 0.78rem;\n  font-weight: 700;\n  padding: 5px 8px;\n}\n.choice-stack[_ngcontent-%COMP%] {\n  display: grid;\n  gap: 8px;\n}\n.choice-label[_ngcontent-%COMP%] {\n  align-items: center;\n  border: 1px solid #d7dde8;\n  border-radius: 6px;\n  color: #1f2937;\n  display: flex;\n  gap: 8px;\n  padding: 9px 10px;\n}\n.choice-label[_ngcontent-%COMP%]   input[_ngcontent-%COMP%] {\n  width: auto;\n}\n@media (max-width: 760px) {\n  .question-title[_ngcontent-%COMP%] {\n    align-items: flex-start;\n    flex-direction: column;\n  }\n}\n/*# sourceMappingURL=assignment-runner.component.css.map */"] });
 };
 (() => {
   (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(AssignmentRunnerComponent, [{
@@ -40681,18 +40654,13 @@ var AssignmentRunnerComponent = class _AssignmentRunnerComponent {
         </select>
       </div>
       <div class="field">
-        <label for="questionnaire">Questionnaire</label>
-        <select id="questionnaire" [ngModel]="selectedQuestionnaireId()" (ngModelChange)="selectedQuestionnaireId.set(+$event || null)">
-          <option [value]="null">Select questionnaire</option>
-          @for (questionnaire of questionnaires(); track questionnaire.questionnaireId) {
-            <option [value]="questionnaire.questionnaireId">{{ questionnaire.title }}</option>
-          }
-        </select>
+        <label>Questionnaire</label>
+        <div class="readonly-value">{{ seededQuestionnaireTitle() }}</div>
       </div>
     </div>
 
     <div class="actions">
-      <button type="button" class="button" (click)="assignQuestionnaire()">Assign Questionnaire</button>
+      <button type="button" class="button" [disabled]="!seededQuestionnaire()" (click)="assignQuestionnaire()">Assign Questionnaire</button>
       <button type="button" class="button secondary" (click)="loadLookups()">Refresh</button>
     </div>
 
@@ -40782,7 +40750,7 @@ var AssignmentRunnerComponent = class _AssignmentRunnerComponent {
     }
   </section>
 </div>
-`, styles: ["/* src/app/features/assignment-runner/assignment-runner.component.css */\nh3 {\n  margin-top: 24px;\n}\n.select-link {\n  background: transparent;\n  border: 0;\n  color: #244260;\n  cursor: pointer;\n  font: inherit;\n  font-weight: 700;\n  padding: 0;\n  text-align: left;\n}\n.list-item p {\n  margin: 6px 0 0;\n}\n.response-list {\n  display: grid;\n  gap: 14px;\n  margin-top: 16px;\n}\n.response-question {\n  border: 1px solid #d7dde8;\n  border-radius: 8px;\n  padding: 14px;\n}\n.question-title {\n  align-items: center;\n  display: flex;\n  gap: 10px;\n  justify-content: space-between;\n  margin-bottom: 12px;\n}\n.question-title span {\n  background: #eef2f6;\n  border-radius: 999px;\n  color: #415165;\n  font-size: 0.78rem;\n  font-weight: 700;\n  padding: 5px 8px;\n}\n.choice-stack {\n  display: grid;\n  gap: 8px;\n}\n.choice-label {\n  align-items: center;\n  border: 1px solid #d7dde8;\n  border-radius: 6px;\n  color: #1f2937;\n  display: flex;\n  gap: 8px;\n  padding: 9px 10px;\n}\n.choice-label input {\n  width: auto;\n}\n@media (max-width: 760px) {\n  .question-title {\n    align-items: flex-start;\n    flex-direction: column;\n  }\n}\n/*# sourceMappingURL=assignment-runner.component.css.map */\n"] }]
+`, styles: ["/* src/app/features/assignment-runner/assignment-runner.component.css */\nh3 {\n  margin-top: 24px;\n}\n.select-link {\n  background: transparent;\n  border: 0;\n  color: #244260;\n  cursor: pointer;\n  font: inherit;\n  font-weight: 700;\n  padding: 0;\n  text-align: left;\n}\n.list-item p {\n  margin: 6px 0 0;\n}\n.readonly-value {\n  align-items: center;\n  background: #f8fafc;\n  border: 1px solid #c7d2df;\n  border-radius: 6px;\n  color: #1f2937;\n  display: flex;\n  min-height: 38px;\n  padding: 8px 10px;\n}\n.response-list {\n  display: grid;\n  gap: 14px;\n  margin-top: 16px;\n}\n.response-question {\n  border: 1px solid #d7dde8;\n  border-radius: 8px;\n  padding: 14px;\n}\n.question-title {\n  align-items: center;\n  display: flex;\n  gap: 10px;\n  justify-content: space-between;\n  margin-bottom: 12px;\n}\n.question-title span {\n  background: #eef2f6;\n  border-radius: 999px;\n  color: #415165;\n  font-size: 0.78rem;\n  font-weight: 700;\n  padding: 5px 8px;\n}\n.choice-stack {\n  display: grid;\n  gap: 8px;\n}\n.choice-label {\n  align-items: center;\n  border: 1px solid #d7dde8;\n  border-radius: 6px;\n  color: #1f2937;\n  display: flex;\n  gap: 8px;\n  padding: 9px 10px;\n}\n.choice-label input {\n  width: auto;\n}\n@media (max-width: 760px) {\n  .question-title {\n    align-items: flex-start;\n    flex-direction: column;\n  }\n}\n/*# sourceMappingURL=assignment-runner.component.css.map */\n"] }]
   }], null, null);
 })();
 (() => {
@@ -41379,800 +41347,187 @@ var ParticipantAdminComponent = class _ParticipantAdminComponent {
 })();
 
 // src/app/features/questionnaire-admin/questionnaire-admin.component.ts
-var _forTrack04 = ($index, $item) => $item.questionnaireId;
-var _forTrack12 = ($index, $item) => $item.value;
+var _forTrack04 = ($index, $item) => $item.questionId;
+var _forTrack12 = ($index, $item) => $item.selectableQuestionChoiceId;
+function QuestionnaireAdminComponent_Conditional_9_Template(rf, ctx) {
+  if (rf & 1) {
+    \u0275\u0275domElementStart(0, "p", 2);
+    \u0275\u0275text(1, "Loading questionnaire...");
+    \u0275\u0275domElementEnd();
+  }
+}
 function QuestionnaireAdminComponent_Conditional_10_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "p", 3);
-    \u0275\u0275text(1, "Loading questionnaires...");
-    \u0275\u0275elementEnd();
+    \u0275\u0275domElementStart(0, "p", 4);
+    \u0275\u0275text(1);
+    \u0275\u0275domElementEnd();
+  }
+  if (rf & 2) {
+    const ctx_r0 = \u0275\u0275nextContext();
+    \u0275\u0275advance();
+    \u0275\u0275textInterpolate(ctx_r0.error());
   }
 }
-function QuestionnaireAdminComponent_For_13_Template(rf, ctx) {
+function QuestionnaireAdminComponent_Conditional_11_For_7_Conditional_9_For_2_Template(rf, ctx) {
   if (rf & 1) {
-    const _r1 = \u0275\u0275getCurrentView();
-    \u0275\u0275elementStart(0, "article", 17)(1, "button", 18);
-    \u0275\u0275listener("click", function QuestionnaireAdminComponent_For_13_Template_button_click_1_listener() {
-      const questionnaire_r2 = \u0275\u0275restoreView(_r1).$implicit;
-      const ctx_r2 = \u0275\u0275nextContext();
-      return \u0275\u0275resetView(ctx_r2.selectQuestionnaire(questionnaire_r2));
-    });
-    \u0275\u0275text(2);
-    \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(3, "p", 3);
+    \u0275\u0275domElementStart(0, "span");
+    \u0275\u0275text(1);
+    \u0275\u0275domElementEnd();
+  }
+  if (rf & 2) {
+    const choice_r2 = ctx.$implicit;
+    \u0275\u0275advance();
+    \u0275\u0275textInterpolate(choice_r2.choiceText);
+  }
+}
+function QuestionnaireAdminComponent_Conditional_11_For_7_Conditional_9_Template(rf, ctx) {
+  if (rf & 1) {
+    \u0275\u0275domElementStart(0, "div", 10);
+    \u0275\u0275repeaterCreate(1, QuestionnaireAdminComponent_Conditional_11_For_7_Conditional_9_For_2_Template, 2, 1, "span", null, _forTrack12);
+    \u0275\u0275domElementEnd();
+  }
+  if (rf & 2) {
+    const question_r3 = \u0275\u0275nextContext().$implicit;
+    \u0275\u0275advance();
+    \u0275\u0275repeater(question_r3.choices);
+  }
+}
+function QuestionnaireAdminComponent_Conditional_11_For_7_Template(rf, ctx) {
+  if (rf & 1) {
+    \u0275\u0275domElementStart(0, "article", 7)(1, "div", 8)(2, "div")(3, "h3");
     \u0275\u0275text(4);
-    \u0275\u0275elementEnd()();
+    \u0275\u0275domElementEnd();
+    \u0275\u0275domElementStart(5, "p", 2);
+    \u0275\u0275text(6);
+    \u0275\u0275domElementEnd()();
+    \u0275\u0275domElementStart(7, "span", 9);
+    \u0275\u0275text(8);
+    \u0275\u0275domElementEnd()();
+    \u0275\u0275conditionalCreate(9, QuestionnaireAdminComponent_Conditional_11_For_7_Conditional_9_Template, 3, 0, "div", 10);
+    \u0275\u0275domElementEnd();
   }
   if (rf & 2) {
-    const questionnaire_r2 = ctx.$implicit;
-    const ctx_r2 = \u0275\u0275nextContext();
-    \u0275\u0275classProp("selected", ctx_r2.selectedId() === questionnaire_r2.questionnaireId);
-    \u0275\u0275advance(2);
-    \u0275\u0275textInterpolate1(" ", questionnaire_r2.title, " ");
-    \u0275\u0275advance(2);
-    \u0275\u0275textInterpolate1("", (questionnaire_r2.questions == null ? null : questionnaire_r2.questions.length) ?? 0, " questions");
-  }
-}
-function QuestionnaireAdminComponent_ForEmpty_14_Template(rf, ctx) {
-  if (rf & 1) {
-    \u0275\u0275elementStart(0, "p", 3);
-    \u0275\u0275text(1, "No questionnaires yet.");
-    \u0275\u0275elementEnd();
-  }
-}
-function QuestionnaireAdminComponent_Conditional_21_Template(rf, ctx) {
-  if (rf & 1) {
-    \u0275\u0275elementStart(0, "p", 7);
-    \u0275\u0275text(1);
-    \u0275\u0275elementEnd();
-  }
-  if (rf & 2) {
-    const ctx_r2 = \u0275\u0275nextContext();
-    \u0275\u0275advance();
-    \u0275\u0275textInterpolate(ctx_r2.error());
-  }
-}
-function QuestionnaireAdminComponent_Conditional_22_Template(rf, ctx) {
-  if (rf & 1) {
-    \u0275\u0275elementStart(0, "p", 8);
-    \u0275\u0275text(1);
-    \u0275\u0275elementEnd();
-  }
-  if (rf & 2) {
-    const ctx_r2 = \u0275\u0275nextContext();
-    \u0275\u0275advance();
-    \u0275\u0275textInterpolate(ctx_r2.success());
-  }
-}
-function QuestionnaireAdminComponent_For_29_For_16_Template(rf, ctx) {
-  if (rf & 1) {
-    \u0275\u0275elementStart(0, "option", 24);
-    \u0275\u0275text(1);
-    \u0275\u0275elementEnd();
-  }
-  if (rf & 2) {
-    const type_r7 = ctx.$implicit;
-    \u0275\u0275property("value", type_r7.value);
-    \u0275\u0275advance();
-    \u0275\u0275textInterpolate(type_r7.label);
-  }
-}
-function QuestionnaireAdminComponent_For_29_For_28_Conditional_0_Template(rf, ctx) {
-  if (rf & 1) {
-    \u0275\u0275elementStart(0, "option", 26);
-    \u0275\u0275text(1);
-    \u0275\u0275elementEnd();
-  }
-  if (rf & 2) {
-    const parent_r8 = \u0275\u0275nextContext().$implicit;
-    \u0275\u0275property("ngValue", parent_r8.questionId);
-    \u0275\u0275advance();
-    \u0275\u0275textInterpolate(parent_r8.text || "Untitled question");
-  }
-}
-function QuestionnaireAdminComponent_For_29_For_28_Template(rf, ctx) {
-  if (rf & 1) {
-    \u0275\u0275conditionalCreate(0, QuestionnaireAdminComponent_For_29_For_28_Conditional_0_Template, 2, 2, "option", 26);
-  }
-  if (rf & 2) {
-    const parent_r8 = ctx.$implicit;
-    const question_r6 = \u0275\u0275nextContext().$implicit;
-    \u0275\u0275conditional(parent_r8 !== question_r6 && parent_r8.questionId ? 0 : -1);
-  }
-}
-function QuestionnaireAdminComponent_For_29_For_36_Conditional_0_Template(rf, ctx) {
-  if (rf & 1) {
-    \u0275\u0275elementStart(0, "option", 26);
-    \u0275\u0275text(1);
-    \u0275\u0275elementEnd();
-  }
-  if (rf & 2) {
-    const choice_r9 = \u0275\u0275nextContext().$implicit;
-    \u0275\u0275property("ngValue", choice_r9.selectableQuestionChoiceId);
-    \u0275\u0275advance();
-    \u0275\u0275textInterpolate(choice_r9.choiceText);
-  }
-}
-function QuestionnaireAdminComponent_For_29_For_36_Template(rf, ctx) {
-  if (rf & 1) {
-    \u0275\u0275conditionalCreate(0, QuestionnaireAdminComponent_For_29_For_36_Conditional_0_Template, 2, 2, "option", 26);
-  }
-  if (rf & 2) {
-    const choice_r9 = ctx.$implicit;
-    \u0275\u0275conditional(choice_r9.selectableQuestionChoiceId ? 0 : -1);
-  }
-}
-function QuestionnaireAdminComponent_For_29_Conditional_37_For_7_Template(rf, ctx) {
-  if (rf & 1) {
-    const _r11 = \u0275\u0275getCurrentView();
-    \u0275\u0275elementStart(0, "div", 30)(1, "input", 31);
-    \u0275\u0275twoWayListener("ngModelChange", function QuestionnaireAdminComponent_For_29_Conditional_37_For_7_Template_input_ngModelChange_1_listener($event) {
-      const choice_r12 = \u0275\u0275restoreView(_r11).$implicit;
-      \u0275\u0275twoWayBindingSet(choice_r12.choiceText, $event) || (choice_r12.choiceText = $event);
-      return \u0275\u0275resetView($event);
-    });
-    \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(2, "input", 32);
-    \u0275\u0275twoWayListener("ngModelChange", function QuestionnaireAdminComponent_For_29_Conditional_37_For_7_Template_input_ngModelChange_2_listener($event) {
-      const choice_r12 = \u0275\u0275restoreView(_r11).$implicit;
-      \u0275\u0275twoWayBindingSet(choice_r12.displayOrder, $event) || (choice_r12.displayOrder = $event);
-      return \u0275\u0275resetView($event);
-    });
-    \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(3, "button", 20);
-    \u0275\u0275listener("click", function QuestionnaireAdminComponent_For_29_Conditional_37_For_7_Template_button_click_3_listener() {
-      const \u0275$index_143_r13 = \u0275\u0275restoreView(_r11).$index;
-      const question_r6 = \u0275\u0275nextContext(2).$implicit;
-      const ctx_r2 = \u0275\u0275nextContext();
-      return \u0275\u0275resetView(ctx_r2.removeChoice(question_r6, \u0275$index_143_r13));
-    });
-    \u0275\u0275text(4, "Remove");
-    \u0275\u0275elementEnd()();
-  }
-  if (rf & 2) {
-    const choice_r12 = ctx.$implicit;
-    \u0275\u0275advance();
-    \u0275\u0275twoWayProperty("ngModel", choice_r12.choiceText);
-    \u0275\u0275advance();
-    \u0275\u0275twoWayProperty("ngModel", choice_r12.displayOrder);
-  }
-}
-function QuestionnaireAdminComponent_For_29_Conditional_37_Template(rf, ctx) {
-  if (rf & 1) {
-    const _r10 = \u0275\u0275getCurrentView();
-    \u0275\u0275elementStart(0, "div", 28)(1, "div", 29)(2, "h4");
-    \u0275\u0275text(3, "Selectable values");
-    \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(4, "button", 4);
-    \u0275\u0275listener("click", function QuestionnaireAdminComponent_For_29_Conditional_37_Template_button_click_4_listener() {
-      \u0275\u0275restoreView(_r10);
-      const question_r6 = \u0275\u0275nextContext().$implicit;
-      const ctx_r2 = \u0275\u0275nextContext();
-      return \u0275\u0275resetView(ctx_r2.addChoice(question_r6));
-    });
-    \u0275\u0275text(5, "Add option");
-    \u0275\u0275elementEnd()();
-    \u0275\u0275repeaterCreate(6, QuestionnaireAdminComponent_For_29_Conditional_37_For_7_Template, 5, 2, "div", 30, \u0275\u0275repeaterTrackByIndex);
-    \u0275\u0275elementEnd();
-  }
-  if (rf & 2) {
-    const question_r6 = \u0275\u0275nextContext().$implicit;
-    \u0275\u0275advance(6);
-    \u0275\u0275repeater(question_r6.choices);
-  }
-}
-function QuestionnaireAdminComponent_For_29_Template(rf, ctx) {
-  if (rf & 1) {
-    const _r4 = \u0275\u0275getCurrentView();
-    \u0275\u0275elementStart(0, "article", 13)(1, "div", 19)(2, "h3");
-    \u0275\u0275text(3);
-    \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(4, "button", 20);
-    \u0275\u0275listener("click", function QuestionnaireAdminComponent_For_29_Template_button_click_4_listener() {
-      const \u0275$index_64_r5 = \u0275\u0275restoreView(_r4).$index;
-      const ctx_r2 = \u0275\u0275nextContext();
-      return \u0275\u0275resetView(ctx_r2.removeQuestion(\u0275$index_64_r5));
-    });
-    \u0275\u0275text(5, "Remove");
-    \u0275\u0275elementEnd()();
-    \u0275\u0275elementStart(6, "div", 21)(7, "div", 22)(8, "label");
-    \u0275\u0275text(9, "Question text");
-    \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(10, "textarea", 23);
-    \u0275\u0275twoWayListener("ngModelChange", function QuestionnaireAdminComponent_For_29_Template_textarea_ngModelChange_10_listener($event) {
-      const question_r6 = \u0275\u0275restoreView(_r4).$implicit;
-      \u0275\u0275twoWayBindingSet(question_r6.text, $event) || (question_r6.text = $event);
-      return \u0275\u0275resetView($event);
-    });
-    \u0275\u0275elementEnd()();
-    \u0275\u0275elementStart(11, "div", 9)(12, "label");
-    \u0275\u0275text(13, "Question type");
-    \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(14, "select", 23);
-    \u0275\u0275listener("ngModelChange", function QuestionnaireAdminComponent_For_29_Template_select_ngModelChange_14_listener($event) {
-      const question_r6 = \u0275\u0275restoreView(_r4).$implicit;
-      const ctx_r2 = \u0275\u0275nextContext();
-      return \u0275\u0275resetView(ctx_r2.updateQuestionType(question_r6, $event));
-    });
-    \u0275\u0275repeaterCreate(15, QuestionnaireAdminComponent_For_29_For_16_Template, 2, 2, "option", 24, _forTrack12);
-    \u0275\u0275elementEnd()();
-    \u0275\u0275elementStart(17, "div", 9)(18, "label");
-    \u0275\u0275text(19, "Display order");
-    \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(20, "input", 25);
-    \u0275\u0275twoWayListener("ngModelChange", function QuestionnaireAdminComponent_For_29_Template_input_ngModelChange_20_listener($event) {
-      const question_r6 = \u0275\u0275restoreView(_r4).$implicit;
-      \u0275\u0275twoWayBindingSet(question_r6.displayOrder, $event) || (question_r6.displayOrder = $event);
-      return \u0275\u0275resetView($event);
-    });
-    \u0275\u0275elementEnd()();
-    \u0275\u0275elementStart(21, "div", 9)(22, "label");
-    \u0275\u0275text(23, "Depends on question");
-    \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(24, "select", 23);
-    \u0275\u0275twoWayListener("ngModelChange", function QuestionnaireAdminComponent_For_29_Template_select_ngModelChange_24_listener($event) {
-      const question_r6 = \u0275\u0275restoreView(_r4).$implicit;
-      \u0275\u0275twoWayBindingSet(question_r6.parentQuestionId, $event) || (question_r6.parentQuestionId = $event);
-      return \u0275\u0275resetView($event);
-    });
-    \u0275\u0275elementStart(25, "option", 26);
-    \u0275\u0275text(26, "Always show");
-    \u0275\u0275elementEnd();
-    \u0275\u0275repeaterCreate(27, QuestionnaireAdminComponent_For_29_For_28_Template, 1, 1, null, null, \u0275\u0275repeaterTrackByIndex);
-    \u0275\u0275elementEnd()();
-    \u0275\u0275elementStart(29, "div", 9)(30, "label");
-    \u0275\u0275text(31, "Depends on answer");
-    \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(32, "select", 27);
-    \u0275\u0275twoWayListener("ngModelChange", function QuestionnaireAdminComponent_For_29_Template_select_ngModelChange_32_listener($event) {
-      const question_r6 = \u0275\u0275restoreView(_r4).$implicit;
-      \u0275\u0275twoWayBindingSet(question_r6.parentChoiceId, $event) || (question_r6.parentChoiceId = $event);
-      return \u0275\u0275resetView($event);
-    });
-    \u0275\u0275elementStart(33, "option", 26);
-    \u0275\u0275text(34, "Any answer");
-    \u0275\u0275elementEnd();
-    \u0275\u0275repeaterCreate(35, QuestionnaireAdminComponent_For_29_For_36_Template, 1, 1, null, null, \u0275\u0275repeaterTrackByIndex);
-    \u0275\u0275elementEnd()()();
-    \u0275\u0275conditionalCreate(37, QuestionnaireAdminComponent_For_29_Conditional_37_Template, 8, 0, "div", 28);
-    \u0275\u0275elementEnd();
-  }
-  if (rf & 2) {
-    const question_r6 = ctx.$implicit;
-    const \u0275$index_64_r5 = ctx.$index;
-    const ctx_r2 = \u0275\u0275nextContext();
-    \u0275\u0275advance(3);
-    \u0275\u0275textInterpolate1("Question ", \u0275$index_64_r5 + 1);
-    \u0275\u0275advance(7);
-    \u0275\u0275twoWayProperty("ngModel", question_r6.text);
+    const question_r3 = ctx.$implicit;
+    const ctx_r0 = \u0275\u0275nextContext(2);
     \u0275\u0275advance(4);
-    \u0275\u0275property("ngModel", question_r6.questionType);
-    \u0275\u0275advance();
-    \u0275\u0275repeater(ctx_r2.questionTypes);
-    \u0275\u0275advance(5);
-    \u0275\u0275twoWayProperty("ngModel", question_r6.displayOrder);
-    \u0275\u0275advance(4);
-    \u0275\u0275twoWayProperty("ngModel", question_r6.parentQuestionId);
-    \u0275\u0275advance();
-    \u0275\u0275property("ngValue", null);
+    \u0275\u0275textInterpolate2("", question_r3.displayOrder, ". ", question_r3.text);
     \u0275\u0275advance(2);
-    \u0275\u0275repeater(ctx_r2.draft().questions);
-    \u0275\u0275advance(5);
-    \u0275\u0275twoWayProperty("ngModel", question_r6.parentChoiceId);
-    \u0275\u0275property("disabled", !question_r6.parentQuestionId);
+    \u0275\u0275textInterpolate(ctx_r0.dependencyText(question_r3));
+    \u0275\u0275advance(2);
+    \u0275\u0275textInterpolate(ctx_r0.questionTypeLabel(question_r3.questionType));
     \u0275\u0275advance();
-    \u0275\u0275property("ngValue", null);
-    \u0275\u0275advance(2);
-    \u0275\u0275repeater(ctx_r2.parentChoices(question_r6));
-    \u0275\u0275advance(2);
-    \u0275\u0275conditional(ctx_r2.hasChoices(question_r6) ? 37 : -1);
+    \u0275\u0275conditional((question_r3.choices == null ? null : question_r3.choices.length) ? 9 : -1);
   }
 }
-function QuestionnaireAdminComponent_Conditional_35_Template(rf, ctx) {
+function QuestionnaireAdminComponent_Conditional_11_Template(rf, ctx) {
   if (rf & 1) {
-    const _r14 = \u0275\u0275getCurrentView();
-    \u0275\u0275elementStart(0, "button", 20);
-    \u0275\u0275listener("click", function QuestionnaireAdminComponent_Conditional_35_Template_button_click_0_listener() {
-      \u0275\u0275restoreView(_r14);
-      const ctx_r2 = \u0275\u0275nextContext();
-      return \u0275\u0275resetView(ctx_r2.deleteSelected());
-    });
-    \u0275\u0275text(1, "Delete");
-    \u0275\u0275elementEnd();
+    \u0275\u0275domElementStart(0, "div", 5)(1, "h3");
+    \u0275\u0275text(2);
+    \u0275\u0275domElementEnd();
+    \u0275\u0275domElementStart(3, "p", 2);
+    \u0275\u0275text(4);
+    \u0275\u0275domElementEnd()();
+    \u0275\u0275domElementStart(5, "div", 6);
+    \u0275\u0275repeaterCreate(6, QuestionnaireAdminComponent_Conditional_11_For_7_Template, 10, 5, "article", 7, _forTrack04);
+    \u0275\u0275domElementEnd();
+  }
+  if (rf & 2) {
+    let tmp_1_0;
+    const ctx_r0 = \u0275\u0275nextContext();
+    \u0275\u0275advance(2);
+    \u0275\u0275textInterpolate((tmp_1_0 = ctx_r0.questionnaire()) == null ? null : tmp_1_0.title);
+    \u0275\u0275advance(2);
+    \u0275\u0275textInterpolate1("", ctx_r0.questions().length, " seeded questions");
+    \u0275\u0275advance(2);
+    \u0275\u0275repeater(ctx_r0.questions());
   }
 }
 var QuestionnaireAdminComponent = class _QuestionnaireAdminComponent {
   api = inject2(PmsApiService);
-  questionnaires = signal([], ...ngDevMode ? [{ debugName: "questionnaires" }] : []);
-  draft = signal(this.emptyDraft(), ...ngDevMode ? [{ debugName: "draft" }] : []);
-  selectedId = signal(null, ...ngDevMode ? [{ debugName: "selectedId" }] : []);
+  questionnaire = signal(null, ...ngDevMode ? [{ debugName: "questionnaire" }] : []);
   loading = signal(false, ...ngDevMode ? [{ debugName: "loading" }] : []);
-  saving = signal(false, ...ngDevMode ? [{ debugName: "saving" }] : []);
   error = signal(null, ...ngDevMode ? [{ debugName: "error" }] : []);
-  success = signal(null, ...ngDevMode ? [{ debugName: "success" }] : []);
-  seededOnlineSurvey = signal(false, ...ngDevMode ? [{ debugName: "seededOnlineSurvey" }] : []);
-  questionTypes = [
-    { value: QuestionType.Numeric, label: "Numeric" },
-    { value: QuestionType.Text, label: "Text" },
-    { value: QuestionType.SingleSelect, label: "Single select" },
-    { value: QuestionType.MultiSelect, label: "Multi select" }
-  ];
-  isEditing = computed(() => this.selectedId() !== null, ...ngDevMode ? [{ debugName: "isEditing" }] : []);
+  questions = computed(() => (this.questionnaire()?.questions ?? []).slice().sort((left, right) => left.displayOrder - right.displayOrder), ...ngDevMode ? [{ debugName: "questions" }] : []);
   ngOnInit() {
-    this.loadQuestionnaires();
+    this.loadQuestionnaire();
   }
-  loadQuestionnaires() {
+  loadQuestionnaire() {
     this.loading.set(true);
     this.error.set(null);
     this.api.getQuestionnaires().subscribe({
       next: (questionnaires) => {
-        this.questionnaires.set(questionnaires);
+        this.questionnaire.set(questionnaires[0] ?? null);
         this.loading.set(false);
+        if (questionnaires.length === 0) {
+          this.error.set("No questionnaire found. Run Scripts/SeedQuestionnairePocData.sql against the PMS database.");
+        }
       },
       error: () => {
-        this.error.set("Unable to load questionnaires. Confirm the PMS.API project is running on port 5188.");
+        this.error.set("Unable to load the seeded questionnaire. Confirm the PMS.API project is running on port 5188.");
         this.loading.set(false);
       }
     });
   }
-  selectQuestionnaire(questionnaire) {
-    this.seededOnlineSurvey.set(false);
-    this.selectedId.set(questionnaire.questionnaireId);
-    this.draft.set({
-      questionnaireId: questionnaire.questionnaireId,
-      title: questionnaire.title ?? "",
-      questions: (questionnaire.questions ?? []).slice().sort((left, right) => left.displayOrder - right.displayOrder).map((question) => ({
-        questionId: question.questionId,
-        text: question.text ?? "",
-        questionType: question.questionType,
-        displayOrder: question.displayOrder,
-        parentQuestionId: question.parentQuestionId ?? null,
-        parentChoiceId: question.parentChoiceId ?? null,
-        choices: (question.choices ?? []).slice().sort((left, right) => left.displayOrder - right.displayOrder).map((choice) => ({
-          selectableQuestionChoiceId: choice.selectableQuestionChoiceId,
-          choiceText: choice.choiceText ?? "",
-          displayOrder: choice.displayOrder
-        }))
-      }))
-    });
-    this.success.set(null);
-    this.error.set(null);
-  }
-  newQuestionnaire() {
-    this.seededOnlineSurvey.set(false);
-    this.selectedId.set(null);
-    this.draft.set(this.emptyDraft());
-    this.success.set(null);
-    this.error.set(null);
-  }
-  addQuestion() {
-    this.seededOnlineSurvey.set(false);
-    const nextOrder = this.draft().questions.length + 1;
-    this.draft.update((draft) => __spreadProps(__spreadValues({}, draft), {
-      questions: [
-        ...draft.questions,
-        {
-          text: "",
-          questionType: QuestionType.Numeric,
-          displayOrder: nextOrder,
-          parentQuestionId: null,
-          parentChoiceId: null,
-          choices: []
-        }
-      ]
-    }));
-  }
-  removeQuestion(index) {
-    this.seededOnlineSurvey.set(false);
-    this.draft.update((draft) => __spreadProps(__spreadValues({}, draft), {
-      questions: draft.questions.filter((_, questionIndex) => questionIndex !== index)
-    }));
-  }
-  addChoice(question) {
-    this.seededOnlineSurvey.set(false);
-    question.choices.push({
-      choiceText: "",
-      displayOrder: question.choices.length + 1
-    });
-    this.refreshDraft();
-  }
-  removeChoice(question, index) {
-    this.seededOnlineSurvey.set(false);
-    question.choices.splice(index, 1);
-    question.choices.forEach((choice, choiceIndex) => {
-      choice.displayOrder = choiceIndex + 1;
-    });
-    this.refreshDraft();
-  }
-  updateQuestionType(question, value) {
-    this.seededOnlineSurvey.set(false);
-    question.questionType = Number(value);
-    if (!this.hasChoices(question)) {
-      question.choices = [];
+  dependencyText(question) {
+    if (!question.parentQuestionId || !question.parentChoiceId) {
+      return "Always shown";
     }
-    this.refreshDraft();
+    const parentQuestion = this.questions().find((candidate) => candidate.questionId === question.parentQuestionId);
+    const parentChoice = parentQuestion?.choices?.find((choice) => choice.selectableQuestionChoiceId === question.parentChoiceId);
+    return parentQuestion && parentChoice ? `Shown when "${parentChoice.choiceText}" is selected for "${parentQuestion.text}"` : "Conditional display rule";
   }
-  parentChoices(question) {
-    const parentQuestion = this.draft().questions.find((candidate) => candidate.questionId === question.parentQuestionId);
-    return parentQuestion?.choices ?? [];
-  }
-  hasChoices(question) {
-    return question.questionType === QuestionType.SingleSelect || question.questionType === QuestionType.MultiSelect;
-  }
-  saveQuestionnaire() {
-    const draft = this.draft();
-    if (!draft.title.trim() || draft.questions.length === 0) {
-      this.error.set("A questionnaire needs a title and at least one question.");
-      return;
+  questionTypeLabel(questionType) {
+    switch (questionType) {
+      case QuestionType.Numeric:
+        return "Numeric";
+      case QuestionType.Text:
+        return "Text";
+      case QuestionType.SingleSelect:
+        return "Single select";
+      case QuestionType.MultiSelect:
+        return "Multi select";
     }
-    const request = this.toRequest(draft);
-    this.saving.set(true);
-    this.error.set(null);
-    this.success.set(null);
-    const shouldApplySampleDependency = !this.selectedId() && this.seededOnlineSurvey();
-    const save$ = this.selectedId() ? this.api.updateQuestionnaire(this.selectedId(), request) : this.api.createQuestionnaire(request);
-    save$.subscribe({
-      next: (questionnaire) => {
-        if (shouldApplySampleDependency) {
-          this.applyOnlineSurveyDependency(questionnaire);
-          return;
-        }
-        this.saving.set(false);
-        this.success.set(`Saved "${questionnaire.title}".`);
-        this.selectQuestionnaire(questionnaire);
-        this.loadQuestionnaires();
-      },
-      error: () => {
-        this.saving.set(false);
-        this.error.set("Unable to save questionnaire. Check required text and option values.");
-      }
-    });
-  }
-  deleteSelected() {
-    const questionnaireId = this.selectedId();
-    if (!questionnaireId) {
-      return;
-    }
-    this.api.deleteQuestionnaire(questionnaireId).subscribe({
-      next: () => {
-        this.success.set("Questionnaire deleted.");
-        this.newQuestionnaire();
-        this.loadQuestionnaires();
-      },
-      error: () => this.error.set("Unable to delete questionnaire.")
-    });
-  }
-  seedOnlineSurvey() {
-    this.seededOnlineSurvey.set(true);
-    this.selectedId.set(null);
-    this.draft.set({
-      title: "Online Usage Survey",
-      questions: [
-        {
-          text: "How many hours per day do you spend online?",
-          questionType: QuestionType.Numeric,
-          displayOrder: 1,
-          parentQuestionId: null,
-          parentChoiceId: null,
-          choices: []
-        },
-        {
-          text: "Which of the following devices do you use?",
-          questionType: QuestionType.MultiSelect,
-          displayOrder: 2,
-          parentQuestionId: null,
-          parentChoiceId: null,
-          choices: [
-            { choiceText: "Smartphone", displayOrder: 1 },
-            { choiceText: "Laptop", displayOrder: 2 },
-            { choiceText: "Tablet", displayOrder: 3 }
-          ]
-        },
-        {
-          text: "Which tablet brand do you use?",
-          questionType: QuestionType.SingleSelect,
-          displayOrder: 3,
-          parentQuestionId: null,
-          parentChoiceId: null,
-          choices: [
-            { choiceText: "Apple", displayOrder: 1 },
-            { choiceText: "Samsung", displayOrder: 2 },
-            { choiceText: "Microsoft Surface", displayOrder: 3 },
-            { choiceText: "Lenovo", displayOrder: 4 },
-            { choiceText: "Huawei", displayOrder: 5 }
-          ]
-        }
-      ]
-    });
-  }
-  toRequest(draft) {
-    return {
-      title: draft.title.trim(),
-      questions: draft.questions.map((question, index) => ({
-        questionId: question.questionId ?? null,
-        text: question.text.trim(),
-        questionType: question.questionType,
-        displayOrder: question.displayOrder || index + 1,
-        parentQuestionId: question.parentQuestionId || null,
-        parentChoiceId: question.parentChoiceId || null,
-        choices: this.hasChoices(question) ? question.choices.map((choice, choiceIndex) => ({
-          selectableQuestionChoiceId: choice.selectableQuestionChoiceId ?? null,
-          choiceText: choice.choiceText.trim(),
-          displayOrder: choice.displayOrder || choiceIndex + 1
-        })) : []
-      }))
-    };
-  }
-  emptyDraft() {
-    return {
-      title: "",
-      questions: []
-    };
-  }
-  refreshDraft() {
-    this.draft.update((draft) => __spreadProps(__spreadValues({}, draft), { questions: [...draft.questions] }));
-  }
-  applyOnlineSurveyDependency(questionnaire) {
-    const questions = (questionnaire.questions ?? []).slice().sort((left, right) => left.displayOrder - right.displayOrder);
-    const devicesQuestion = questions.find((question) => question.text === "Which of the following devices do you use?");
-    const tabletBrandQuestion = questions.find((question) => question.text === "Which tablet brand do you use?");
-    const tabletChoice = devicesQuestion?.choices?.find((choice) => choice.choiceText === "Tablet");
-    if (!devicesQuestion || !tabletBrandQuestion || !tabletChoice) {
-      this.saving.set(false);
-      this.success.set(`Saved "${questionnaire.title}".`);
-      this.error.set("Saved the sample, but the Tablet dependency could not be applied.");
-      this.selectQuestionnaire(questionnaire);
-      this.loadQuestionnaires();
-      return;
-    }
-    const request = {
-      title: questionnaire.title ?? "",
-      questions: questions.map((question) => ({
-        questionId: question.questionId,
-        text: question.text ?? "",
-        questionType: question.questionType,
-        displayOrder: question.displayOrder,
-        parentQuestionId: question.questionId === tabletBrandQuestion.questionId ? devicesQuestion.questionId : question.parentQuestionId ?? null,
-        parentChoiceId: question.questionId === tabletBrandQuestion.questionId ? tabletChoice.selectableQuestionChoiceId : question.parentChoiceId ?? null,
-        choices: (question.choices ?? []).map((choice) => ({
-          selectableQuestionChoiceId: choice.selectableQuestionChoiceId,
-          choiceText: choice.choiceText ?? "",
-          displayOrder: choice.displayOrder
-        }))
-      }))
-    };
-    this.api.updateQuestionnaire(questionnaire.questionnaireId, request).subscribe({
-      next: (updatedQuestionnaire) => {
-        this.seededOnlineSurvey.set(false);
-        this.saving.set(false);
-        this.success.set(`Saved "${updatedQuestionnaire.title}" with the Tablet dependency.`);
-        this.selectQuestionnaire(updatedQuestionnaire);
-        this.loadQuestionnaires();
-      },
-      error: () => {
-        this.saving.set(false);
-        this.error.set("Saved the sample, but the Tablet dependency could not be applied.");
-        this.selectQuestionnaire(questionnaire);
-        this.loadQuestionnaires();
-      }
-    });
   }
   static \u0275fac = function QuestionnaireAdminComponent_Factory(__ngFactoryType__) {
     return new (__ngFactoryType__ || _QuestionnaireAdminComponent)();
   };
-  static \u0275cmp = /* @__PURE__ */ \u0275\u0275defineComponent({ type: _QuestionnaireAdminComponent, selectors: [["app-questionnaire-admin"]], decls: 36, vars: 9, consts: [[1, "grid"], [1, "panel"], [1, "section-heading"], [1, "muted"], ["type", "button", 1, "button", "secondary", 3, "click"], [1, "list"], [1, "list-item", 3, "selected"], [1, "error"], [1, "success"], [1, "field"], ["for", "questionnaire-title"], ["id", "questionnaire-title", "placeholder", "Online Usage Survey", 3, "ngModelChange", "ngModel"], [1, "questions"], [1, "question-editor"], [1, "actions"], ["type", "button", 1, "button", 3, "click", "disabled"], ["type", "button", 1, "button", "danger"], [1, "list-item"], ["type", "button", 1, "select-link", 3, "click"], [1, "question-header"], ["type", "button", 1, "button", "danger", 3, "click"], [1, "form-grid"], [1, "field", "full"], [3, "ngModelChange", "ngModel"], [3, "value"], ["type", "number", "min", "1", 3, "ngModelChange", "ngModel"], [3, "ngValue"], [3, "ngModelChange", "ngModel", "disabled"], [1, "option-list"], [1, "option-heading"], [1, "option-row"], ["placeholder", "Option text", 3, "ngModelChange", "ngModel"], ["type", "number", "min", "1", "aria-label", "Option display order", 3, "ngModelChange", "ngModel"]], template: function QuestionnaireAdminComponent_Template(rf, ctx) {
+  static \u0275cmp = /* @__PURE__ */ \u0275\u0275defineComponent({ type: _QuestionnaireAdminComponent, selectors: [["app-questionnaire-admin"]], decls: 12, vars: 3, consts: [[1, "panel"], [1, "section-heading"], [1, "muted"], ["type", "button", 1, "button", "secondary", 3, "click"], [1, "error"], [1, "questionnaire-summary"], [1, "questions"], [1, "question-view"], [1, "question-header"], [1, "type-pill"], [1, "option-list"]], template: function QuestionnaireAdminComponent_Template(rf, ctx) {
     if (rf & 1) {
-      \u0275\u0275elementStart(0, "div", 0)(1, "section", 1)(2, "div", 2)(3, "div")(4, "h2");
-      \u0275\u0275text(5, "Questionnaire Administration");
-      \u0275\u0275elementEnd();
-      \u0275\u0275elementStart(6, "p", 3);
-      \u0275\u0275text(7, "Create or update questionnaires with numeric, text, single-select, and multi-select questions.");
-      \u0275\u0275elementEnd()();
-      \u0275\u0275elementStart(8, "button", 4);
-      \u0275\u0275listener("click", function QuestionnaireAdminComponent_Template_button_click_8_listener() {
-        return ctx.newQuestionnaire();
+      \u0275\u0275domElementStart(0, "section", 0)(1, "div", 1)(2, "div")(3, "h2");
+      \u0275\u0275text(4, "Seeded Questionnaire");
+      \u0275\u0275domElementEnd();
+      \u0275\u0275domElementStart(5, "p", 2);
+      \u0275\u0275text(6, "Questions are managed by the database seed script, not by this UI.");
+      \u0275\u0275domElementEnd()();
+      \u0275\u0275domElementStart(7, "button", 3);
+      \u0275\u0275domListener("click", function QuestionnaireAdminComponent_Template_button_click_7_listener() {
+        return ctx.loadQuestionnaire();
       });
-      \u0275\u0275text(9, "New");
-      \u0275\u0275elementEnd()();
-      \u0275\u0275conditionalCreate(10, QuestionnaireAdminComponent_Conditional_10_Template, 2, 0, "p", 3);
-      \u0275\u0275elementStart(11, "div", 5);
-      \u0275\u0275repeaterCreate(12, QuestionnaireAdminComponent_For_13_Template, 5, 4, "article", 6, _forTrack04, false, QuestionnaireAdminComponent_ForEmpty_14_Template, 2, 0, "p", 3);
-      \u0275\u0275elementEnd()();
-      \u0275\u0275elementStart(15, "section", 1)(16, "div", 2)(17, "h2");
-      \u0275\u0275text(18);
-      \u0275\u0275elementEnd();
-      \u0275\u0275elementStart(19, "button", 4);
-      \u0275\u0275listener("click", function QuestionnaireAdminComponent_Template_button_click_19_listener() {
-        return ctx.seedOnlineSurvey();
-      });
-      \u0275\u0275text(20, "Load POC Sample");
-      \u0275\u0275elementEnd()();
-      \u0275\u0275conditionalCreate(21, QuestionnaireAdminComponent_Conditional_21_Template, 2, 1, "p", 7);
-      \u0275\u0275conditionalCreate(22, QuestionnaireAdminComponent_Conditional_22_Template, 2, 1, "p", 8);
-      \u0275\u0275elementStart(23, "div", 9)(24, "label", 10);
-      \u0275\u0275text(25, "Title");
-      \u0275\u0275elementEnd();
-      \u0275\u0275elementStart(26, "input", 11);
-      \u0275\u0275twoWayListener("ngModelChange", function QuestionnaireAdminComponent_Template_input_ngModelChange_26_listener($event) {
-        \u0275\u0275twoWayBindingSet(ctx.draft().title, $event) || (ctx.draft().title = $event);
-        return $event;
-      });
-      \u0275\u0275elementEnd()();
-      \u0275\u0275elementStart(27, "div", 12);
-      \u0275\u0275repeaterCreate(28, QuestionnaireAdminComponent_For_29_Template, 38, 10, "article", 13, \u0275\u0275repeaterTrackByIndex);
-      \u0275\u0275elementEnd();
-      \u0275\u0275elementStart(30, "div", 14)(31, "button", 4);
-      \u0275\u0275listener("click", function QuestionnaireAdminComponent_Template_button_click_31_listener() {
-        return ctx.addQuestion();
-      });
-      \u0275\u0275text(32, "Add Question");
-      \u0275\u0275elementEnd();
-      \u0275\u0275elementStart(33, "button", 15);
-      \u0275\u0275listener("click", function QuestionnaireAdminComponent_Template_button_click_33_listener() {
-        return ctx.saveQuestionnaire();
-      });
-      \u0275\u0275text(34);
-      \u0275\u0275elementEnd();
-      \u0275\u0275conditionalCreate(35, QuestionnaireAdminComponent_Conditional_35_Template, 2, 0, "button", 16);
-      \u0275\u0275elementEnd()()();
+      \u0275\u0275text(8, "Refresh");
+      \u0275\u0275domElementEnd()();
+      \u0275\u0275conditionalCreate(9, QuestionnaireAdminComponent_Conditional_9_Template, 2, 0, "p", 2);
+      \u0275\u0275conditionalCreate(10, QuestionnaireAdminComponent_Conditional_10_Template, 2, 1, "p", 4);
+      \u0275\u0275conditionalCreate(11, QuestionnaireAdminComponent_Conditional_11_Template, 8, 2);
+      \u0275\u0275domElementEnd();
     }
     if (rf & 2) {
-      \u0275\u0275advance(10);
-      \u0275\u0275conditional(ctx.loading() ? 10 : -1);
-      \u0275\u0275advance(2);
-      \u0275\u0275repeater(ctx.questionnaires());
-      \u0275\u0275advance(6);
-      \u0275\u0275textInterpolate(ctx.isEditing() ? "Update Questionnaire" : "Create Questionnaire");
-      \u0275\u0275advance(3);
-      \u0275\u0275conditional(ctx.error() ? 21 : -1);
+      \u0275\u0275advance(9);
+      \u0275\u0275conditional(ctx.loading() ? 9 : -1);
       \u0275\u0275advance();
-      \u0275\u0275conditional(ctx.success() ? 22 : -1);
-      \u0275\u0275advance(4);
-      \u0275\u0275twoWayProperty("ngModel", ctx.draft().title);
-      \u0275\u0275advance(2);
-      \u0275\u0275repeater(ctx.draft().questions);
-      \u0275\u0275advance(5);
-      \u0275\u0275property("disabled", ctx.saving());
+      \u0275\u0275conditional(ctx.error() ? 10 : -1);
       \u0275\u0275advance();
-      \u0275\u0275textInterpolate1(" ", ctx.saving() ? "Saving..." : "Save Questionnaire", " ");
-      \u0275\u0275advance();
-      \u0275\u0275conditional(ctx.isEditing() ? 35 : -1);
+      \u0275\u0275conditional(ctx.questionnaire() ? 11 : -1);
     }
-  }, dependencies: [CommonModule, FormsModule, NgSelectOption, \u0275NgSelectMultipleOption, DefaultValueAccessor, NumberValueAccessor, SelectControlValueAccessor, NgControlStatus, MinValidator, NgModel], styles: ["\n\n.section-heading[_ngcontent-%COMP%], \n.question-header[_ngcontent-%COMP%], \n.option-heading[_ngcontent-%COMP%] {\n  align-items: center;\n  display: flex;\n  gap: 12px;\n  justify-content: space-between;\n}\n.section-heading[_ngcontent-%COMP%] {\n  margin-bottom: 16px;\n}\n.section-heading[_ngcontent-%COMP%]   p[_ngcontent-%COMP%] {\n  margin: 4px 0 0;\n}\n.select-link[_ngcontent-%COMP%] {\n  background: transparent;\n  border: 0;\n  color: #244260;\n  cursor: pointer;\n  font: inherit;\n  font-weight: 700;\n  padding: 0;\n  text-align: left;\n}\n.list-item[_ngcontent-%COMP%]   p[_ngcontent-%COMP%] {\n  margin: 6px 0 0;\n}\n.questions[_ngcontent-%COMP%] {\n  display: grid;\n  gap: 14px;\n  margin-top: 16px;\n}\n.question-editor[_ngcontent-%COMP%] {\n  border: 1px solid #d7dde8;\n  border-radius: 8px;\n  padding: 14px;\n}\n.question-header[_ngcontent-%COMP%]   h3[_ngcontent-%COMP%], \n.option-heading[_ngcontent-%COMP%]   h4[_ngcontent-%COMP%] {\n  margin: 0;\n}\n.option-list[_ngcontent-%COMP%] {\n  margin-top: 14px;\n}\n.option-row[_ngcontent-%COMP%] {\n  display: grid;\n  gap: 10px;\n  grid-template-columns: minmax(0, 1fr) 96px auto;\n  margin-top: 10px;\n}\n@media (max-width: 760px) {\n  .section-heading[_ngcontent-%COMP%], \n   .question-header[_ngcontent-%COMP%], \n   .option-heading[_ngcontent-%COMP%] {\n    align-items: flex-start;\n    flex-direction: column;\n  }\n  .option-row[_ngcontent-%COMP%] {\n    grid-template-columns: 1fr;\n  }\n}\n/*# sourceMappingURL=questionnaire-admin.component.css.map */"] });
+  }, dependencies: [CommonModule], styles: ["\n\n.section-heading[_ngcontent-%COMP%], \n.question-header[_ngcontent-%COMP%] {\n  align-items: center;\n  display: flex;\n  gap: 12px;\n  justify-content: space-between;\n}\n.section-heading[_ngcontent-%COMP%] {\n  margin-bottom: 16px;\n}\n.section-heading[_ngcontent-%COMP%]   p[_ngcontent-%COMP%], \n.questionnaire-summary[_ngcontent-%COMP%]   p[_ngcontent-%COMP%], \n.question-header[_ngcontent-%COMP%]   p[_ngcontent-%COMP%] {\n  margin: 4px 0 0;\n}\n.questionnaire-summary[_ngcontent-%COMP%] {\n  border-bottom: 1px solid #d7dde8;\n  margin-bottom: 16px;\n  padding-bottom: 14px;\n}\n.questionnaire-summary[_ngcontent-%COMP%]   h3[_ngcontent-%COMP%], \n.question-header[_ngcontent-%COMP%]   h3[_ngcontent-%COMP%] {\n  margin: 0;\n}\n.questions[_ngcontent-%COMP%] {\n  display: grid;\n  gap: 14px;\n}\n.question-view[_ngcontent-%COMP%] {\n  border: 1px solid #d7dde8;\n  border-radius: 8px;\n  padding: 14px;\n}\n.type-pill[_ngcontent-%COMP%] {\n  background: #eef2f6;\n  border-radius: 999px;\n  color: #415165;\n  flex: 0 0 auto;\n  font-size: 0.78rem;\n  font-weight: 700;\n  padding: 5px 8px;\n}\n.option-list[_ngcontent-%COMP%] {\n  display: flex;\n  flex-wrap: wrap;\n  gap: 8px;\n  margin-top: 12px;\n}\n.option-list[_ngcontent-%COMP%]   span[_ngcontent-%COMP%] {\n  border: 1px solid #c7d2df;\n  border-radius: 999px;\n  color: #244260;\n  font-size: 0.88rem;\n  padding: 6px 10px;\n}\n@media (max-width: 760px) {\n  .section-heading[_ngcontent-%COMP%], \n   .question-header[_ngcontent-%COMP%] {\n    align-items: flex-start;\n    flex-direction: column;\n  }\n}\n/*# sourceMappingURL=questionnaire-admin.component.css.map */"] });
 };
 (() => {
   (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(QuestionnaireAdminComponent, [{
     type: Component,
-    args: [{ selector: "app-questionnaire-admin", standalone: true, imports: [CommonModule, FormsModule], template: `<div class="grid">
-  <section class="panel">
-    <div class="section-heading">
-      <div>
-        <h2>Questionnaire Administration</h2>
-        <p class="muted">Create or update questionnaires with numeric, text, single-select, and multi-select questions.</p>
-      </div>
-      <button type="button" class="button secondary" (click)="newQuestionnaire()">New</button>
-    </div>
-
-    @if (loading()) {
-      <p class="muted">Loading questionnaires...</p>
-    }
-
-    <div class="list">
-      @for (questionnaire of questionnaires(); track questionnaire.questionnaireId) {
-        <article class="list-item" [class.selected]="selectedId() === questionnaire.questionnaireId">
-          <button type="button" class="select-link" (click)="selectQuestionnaire(questionnaire)">
-            {{ questionnaire.title }}
-          </button>
-          <p class="muted">{{ questionnaire.questions?.length ?? 0 }} questions</p>
-        </article>
-      } @empty {
-        <p class="muted">No questionnaires yet.</p>
-      }
-    </div>
-  </section>
-
-  <section class="panel">
-    <div class="section-heading">
-      <h2>{{ isEditing() ? 'Update Questionnaire' : 'Create Questionnaire' }}</h2>
-      <button type="button" class="button secondary" (click)="seedOnlineSurvey()">Load POC Sample</button>
-    </div>
-
-    @if (error()) {
-      <p class="error">{{ error() }}</p>
-    }
-    @if (success()) {
-      <p class="success">{{ success() }}</p>
-    }
-
-    <div class="field">
-      <label for="questionnaire-title">Title</label>
-      <input id="questionnaire-title" [(ngModel)]="draft().title" placeholder="Online Usage Survey">
-    </div>
-
-    <div class="questions">
-      @for (question of draft().questions; track $index; let questionIndex = $index) {
-        <article class="question-editor">
-          <div class="question-header">
-            <h3>Question {{ questionIndex + 1 }}</h3>
-            <button type="button" class="button danger" (click)="removeQuestion(questionIndex)">Remove</button>
-          </div>
-
-          <div class="form-grid">
-            <div class="field full">
-              <label>Question text</label>
-              <textarea [(ngModel)]="question.text"></textarea>
-            </div>
-            <div class="field">
-              <label>Question type</label>
-              <select [ngModel]="question.questionType" (ngModelChange)="updateQuestionType(question, $event)">
-                @for (type of questionTypes; track type.value) {
-                  <option [value]="type.value">{{ type.label }}</option>
-                }
-              </select>
-            </div>
-            <div class="field">
-              <label>Display order</label>
-              <input type="number" min="1" [(ngModel)]="question.displayOrder">
-            </div>
-            <div class="field">
-              <label>Depends on question</label>
-              <select [(ngModel)]="question.parentQuestionId">
-                <option [ngValue]="null">Always show</option>
-                @for (parent of draft().questions; track $index) {
-                  @if (parent !== question && parent.questionId) {
-                    <option [ngValue]="parent.questionId">{{ parent.text || 'Untitled question' }}</option>
-                  }
-                }
-              </select>
-            </div>
-            <div class="field">
-              <label>Depends on answer</label>
-              <select [(ngModel)]="question.parentChoiceId" [disabled]="!question.parentQuestionId">
-                <option [ngValue]="null">Any answer</option>
-                @for (choice of parentChoices(question); track $index) {
-                  @if (choice.selectableQuestionChoiceId) {
-                    <option [ngValue]="choice.selectableQuestionChoiceId">{{ choice.choiceText }}</option>
-                  }
-                }
-              </select>
-            </div>
-          </div>
-
-          @if (hasChoices(question)) {
-            <div class="option-list">
-              <div class="option-heading">
-                <h4>Selectable values</h4>
-                <button type="button" class="button secondary" (click)="addChoice(question)">Add option</button>
-              </div>
-              @for (choice of question.choices; track $index; let choiceIndex = $index) {
-                <div class="option-row">
-                  <input [(ngModel)]="choice.choiceText" placeholder="Option text">
-                  <input type="number" min="1" [(ngModel)]="choice.displayOrder" aria-label="Option display order">
-                  <button type="button" class="button danger" (click)="removeChoice(question, choiceIndex)">Remove</button>
-                </div>
-              }
-            </div>
-          }
-        </article>
-      }
-    </div>
-
-    <div class="actions">
-      <button type="button" class="button secondary" (click)="addQuestion()">Add Question</button>
-      <button type="button" class="button" [disabled]="saving()" (click)="saveQuestionnaire()">
-        {{ saving() ? 'Saving...' : 'Save Questionnaire' }}
-      </button>
-      @if (isEditing()) {
-        <button type="button" class="button danger" (click)="deleteSelected()">Delete</button>
-      }
-    </div>
-  </section>
-</div>
-`, styles: ["/* src/app/features/questionnaire-admin/questionnaire-admin.component.css */\n.section-heading,\n.question-header,\n.option-heading {\n  align-items: center;\n  display: flex;\n  gap: 12px;\n  justify-content: space-between;\n}\n.section-heading {\n  margin-bottom: 16px;\n}\n.section-heading p {\n  margin: 4px 0 0;\n}\n.select-link {\n  background: transparent;\n  border: 0;\n  color: #244260;\n  cursor: pointer;\n  font: inherit;\n  font-weight: 700;\n  padding: 0;\n  text-align: left;\n}\n.list-item p {\n  margin: 6px 0 0;\n}\n.questions {\n  display: grid;\n  gap: 14px;\n  margin-top: 16px;\n}\n.question-editor {\n  border: 1px solid #d7dde8;\n  border-radius: 8px;\n  padding: 14px;\n}\n.question-header h3,\n.option-heading h4 {\n  margin: 0;\n}\n.option-list {\n  margin-top: 14px;\n}\n.option-row {\n  display: grid;\n  gap: 10px;\n  grid-template-columns: minmax(0, 1fr) 96px auto;\n  margin-top: 10px;\n}\n@media (max-width: 760px) {\n  .section-heading,\n  .question-header,\n  .option-heading {\n    align-items: flex-start;\n    flex-direction: column;\n  }\n  .option-row {\n    grid-template-columns: 1fr;\n  }\n}\n/*# sourceMappingURL=questionnaire-admin.component.css.map */\n"] }]
+    args: [{ selector: "app-questionnaire-admin", standalone: true, imports: [CommonModule], template: '<section class="panel">\n  <div class="section-heading">\n    <div>\n      <h2>Seeded Questionnaire</h2>\n      <p class="muted">Questions are managed by the database seed script, not by this UI.</p>\n    </div>\n    <button type="button" class="button secondary" (click)="loadQuestionnaire()">Refresh</button>\n  </div>\n\n  @if (loading()) {\n    <p class="muted">Loading questionnaire...</p>\n  }\n  @if (error()) {\n    <p class="error">{{ error() }}</p>\n  }\n\n  @if (questionnaire()) {\n    <div class="questionnaire-summary">\n      <h3>{{ questionnaire()?.title }}</h3>\n      <p class="muted">{{ questions().length }} seeded questions</p>\n    </div>\n\n    <div class="questions">\n      @for (question of questions(); track question.questionId) {\n        <article class="question-view">\n          <div class="question-header">\n            <div>\n              <h3>{{ question.displayOrder }}. {{ question.text }}</h3>\n              <p class="muted">{{ dependencyText(question) }}</p>\n            </div>\n            <span class="type-pill">{{ questionTypeLabel(question.questionType) }}</span>\n          </div>\n\n          @if (question.choices?.length) {\n            <div class="option-list">\n              @for (choice of question.choices; track choice.selectableQuestionChoiceId) {\n                <span>{{ choice.choiceText }}</span>\n              }\n            </div>\n          }\n        </article>\n      }\n    </div>\n  }\n</section>\n', styles: ["/* src/app/features/questionnaire-admin/questionnaire-admin.component.css */\n.section-heading,\n.question-header {\n  align-items: center;\n  display: flex;\n  gap: 12px;\n  justify-content: space-between;\n}\n.section-heading {\n  margin-bottom: 16px;\n}\n.section-heading p,\n.questionnaire-summary p,\n.question-header p {\n  margin: 4px 0 0;\n}\n.questionnaire-summary {\n  border-bottom: 1px solid #d7dde8;\n  margin-bottom: 16px;\n  padding-bottom: 14px;\n}\n.questionnaire-summary h3,\n.question-header h3 {\n  margin: 0;\n}\n.questions {\n  display: grid;\n  gap: 14px;\n}\n.question-view {\n  border: 1px solid #d7dde8;\n  border-radius: 8px;\n  padding: 14px;\n}\n.type-pill {\n  background: #eef2f6;\n  border-radius: 999px;\n  color: #415165;\n  flex: 0 0 auto;\n  font-size: 0.78rem;\n  font-weight: 700;\n  padding: 5px 8px;\n}\n.option-list {\n  display: flex;\n  flex-wrap: wrap;\n  gap: 8px;\n  margin-top: 12px;\n}\n.option-list span {\n  border: 1px solid #c7d2df;\n  border-radius: 999px;\n  color: #244260;\n  font-size: 0.88rem;\n  padding: 6px 10px;\n}\n@media (max-width: 760px) {\n  .section-heading,\n  .question-header {\n    align-items: flex-start;\n    flex-direction: column;\n  }\n}\n/*# sourceMappingURL=questionnaire-admin.component.css.map */\n"] }]
   }], null, null);
 })();
 (() => {
-  (typeof ngDevMode === "undefined" || ngDevMode) && \u0275setClassDebugInfo(QuestionnaireAdminComponent, { className: "QuestionnaireAdminComponent", filePath: "src/app/features/questionnaire-admin/questionnaire-admin.component.ts", lineNumber: 21 });
+  (typeof ngDevMode === "undefined" || ngDevMode) && \u0275setClassDebugInfo(QuestionnaireAdminComponent, { className: "QuestionnaireAdminComponent", filePath: "src/app/features/questionnaire-admin/questionnaire-admin.component.ts", lineNumber: 13 });
 })();
 
 // src/app/app.component.ts
@@ -42220,7 +41575,7 @@ function AppComponent_Case_16_Template(rf, ctx) {
 var AppComponent = class _AppComponent {
   activeTab = signal("questionnaires", ...ngDevMode ? [{ debugName: "activeTab" }] : []);
   tabs = [
-    { id: "questionnaires", label: "Questionnaires" },
+    { id: "questionnaires", label: "Questionnaire" },
     { id: "participants", label: "Participants" },
     { id: "assignments", label: "Assignments" },
     { id: "audit", label: "Audit Log" }

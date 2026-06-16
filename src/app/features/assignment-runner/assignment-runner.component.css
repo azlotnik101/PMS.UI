@@ -17,6 +17,17 @@ h3 {
   margin: 6px 0 0;
 }
 
+.readonly-value {
+  align-items: center;
+  background: #f8fafc;
+  border: 1px solid #c7d2df;
+  border-radius: 6px;
+  color: #1f2937;
+  display: flex;
+  min-height: 38px;
+  padding: 8px 10px;
+}
+
 .response-list {
   display: grid;
   gap: 14px;
