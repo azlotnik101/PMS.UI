@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/features/audit-log/audit-log.component.css"],
+  "sourcesContent": [".section-heading {\n  align-items: center;\n  display: flex;\n  gap: 12px;\n  justify-content: space-between;\n  margin-bottom: 16px;\n}\n\n.section-heading p {\n  margin: 4px 0 0;\n}\n\n@media (max-width: 760px) {\n  .section-heading {\n    align-items: flex-start;\n    flex-direction: column;\n  }\n}\n"],
+  "mappings": ";AAAA,CAAC;AACC,eAAa;AACb,WAAS;AACT,OAAK;AACL,mBAAiB;AACjB,iBAAe;AACjB;AAEA,CARC,gBAQgB;AACf,UAAQ,IAAI,EAAE;AAChB;AAEA,QAAO,WAAY;AACjB,GAbD;AAcG,iBAAa;AACb,oBAAgB;AAClB;AACF;",
+  "names": []
+}

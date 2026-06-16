@@ -1,0 +1,45 @@
+<section class="panel">
+  <div class="section-heading">
+    <div>
+      <h2>Audit Logging</h2>
+      <p class="muted">Questionnaire, participant, and assignment events recorded by the API.</p>
+    </div>
+    <button type="button" class="button secondary" (click)="loadAuditLogs()">Refresh</button>
+  </div>
+
+  @if (error()) {
+    <p class="error">{{ error() }}</p>
+  }
+  @if (loading()) {
+    <p class="muted">Loading audit log...</p>
+  }
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Entity</th>
+          <th>Entity Id</th>
+          <th>Action</th>
+          <th>Details</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (log of auditLogs(); track log.auditLogId) {
+          <tr>
+            <td>{{ log.createdDate | date: 'medium' }}</td>
+            <td>{{ log.entityName }}</td>
+            <td>{{ log.entityId }}</td>
+            <td>{{ log.action }}</td>
+            <td>{{ log.details }}</td>
+          </tr>
+        } @empty {
+          <tr>
+            <td colspan="5" class="muted">No audit entries yet.</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</section>

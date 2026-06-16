@@ -1,0 +1,123 @@
+<div class="grid">
+  <section class="panel">
+    <h2>Questionnaire Assignment</h2>
+
+    @if (error()) {
+      <p class="error">{{ error() }}</p>
+    }
+    @if (success()) {
+      <p class="success">{{ success() }}</p>
+    }
+
+    <div class="form-grid">
+      <div class="field">
+        <label for="participant">Participant</label>
+        <select id="participant" [ngModel]="selectedParticipantId()" (ngModelChange)="participantChanged($event)">
+          <option [value]="null">Select participant</option>
+          @for (participant of participants(); track participant.participantId) {
+            <option [value]="participant.participantId">{{ participant.firstName }} {{ participant.lastName }}</option>
+          }
+        </select>
+      </div>
+      <div class="field">
+        <label for="questionnaire">Questionnaire</label>
+        <select id="questionnaire" [ngModel]="selectedQuestionnaireId()" (ngModelChange)="selectedQuestionnaireId.set(+$event || null)">
+          <option [value]="null">Select questionnaire</option>
+          @for (questionnaire of questionnaires(); track questionnaire.questionnaireId) {
+            <option [value]="questionnaire.questionnaireId">{{ questionnaire.title }}</option>
+          }
+        </select>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button type="button" class="button" (click)="assignQuestionnaire()">Assign Questionnaire</button>
+      <button type="button" class="button secondary" (click)="loadLookups()">Refresh</button>
+    </div>
+
+    <h3>Assignments</h3>
+    <div class="list">
+      @for (assignment of assignments(); track assignment.questionnaireAssignmentId) {
+        <article class="list-item" [class.selected]="selectedAssignment()?.questionnaireAssignmentId === assignment.questionnaireAssignmentId">
+          <button type="button" class="select-link" (click)="selectAssignment(assignment)">
+            {{ assignment.questionnaire?.title ?? 'Questionnaire #' + assignment.questionnaireId }}
+          </button>
+          <p class="muted">
+            Assigned {{ assignment.assignedDate | date: 'mediumDate' }} -
+            {{ assignment.completed ? 'Completed' : 'Open' }}
+          </p>
+        </article>
+      } @empty {
+        <p class="muted">Select a participant to see assignments.</p>
+      }
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Response Collection</h2>
+
+    @if (selectedAssignment()) {
+      <p class="muted">Answer visible questions. Conditional questions appear after their parent answer is selected.</p>
+
+      <div class="response-list">
+        @for (question of selectedQuestions(); track question.questionId) {
+          @if (isVisible(question)) {
+            <article class="response-question">
+              <div class="question-title">
+                <strong>{{ question.text }}</strong>
+                <span>{{ questionTypeLabel(question.questionType) }}</span>
+              </div>
+
+              @switch (question.questionType) {
+                @case (QuestionType.Numeric) {
+                  <input type="number" [ngModel]="answers()[question.questionId]" (ngModelChange)="setAnswer(question.questionId, +$event)">
+                }
+                @case (QuestionType.Text) {
+                  <textarea [ngModel]="answers()[question.questionId]" (ngModelChange)="setAnswer(question.questionId, $event)"></textarea>
+                }
+                @case (QuestionType.SingleSelect) {
+                  <div class="choice-stack">
+                    @for (choice of question.choices ?? []; track choice.selectableQuestionChoiceId) {
+                      <label class="choice-label">
+                        <input
+                          type="radio"
+                          [name]="'question-' + question.questionId"
+                          [ngModel]="answers()[question.questionId]"
+                          [value]="choice.selectableQuestionChoiceId"
+                          (ngModelChange)="setAnswer(question.questionId, +$event)">
+                        {{ choice.choiceText }}
+                      </label>
+                    }
+                  </div>
+                }
+                @case (QuestionType.MultiSelect) {
+                  <div class="choice-stack">
+                    @for (choice of question.choices ?? []; track choice.selectableQuestionChoiceId) {
+                      <label class="choice-label">
+                        <input
+                          type="checkbox"
+                          [checked]="isChoiceSelected(question.questionId, choice.selectableQuestionChoiceId)"
+                          (change)="toggleMulti(question.questionId, choice.selectableQuestionChoiceId, $any($event.target).checked)">
+                        {{ choice.choiceText }}
+                      </label>
+                    }
+                  </div>
+                }
+              }
+            </article>
+          }
+        } @empty {
+          <p class="muted">This assignment has no questions.</p>
+        }
+      </div>
+
+      <div class="actions">
+        <button type="button" class="button" [disabled]="saving()" (click)="submitResponses()">
+          {{ saving() ? 'Saving...' : 'Submit Responses' }}
+        </button>
+      </div>
+    } @else {
+      <p class="muted">Select an assignment to collect responses.</p>
+    }
+  </section>
+</div>

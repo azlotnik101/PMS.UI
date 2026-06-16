@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/features/participant-admin/participant-admin.component.css"],
+  "sourcesContent": [".section-heading {\n  align-items: center;\n  display: flex;\n  gap: 12px;\n  justify-content: space-between;\n  margin-bottom: 16px;\n}\n\n.section-heading p {\n  margin: 4px 0 0;\n}\n\n.select-link {\n  background: transparent;\n  border: 0;\n  color: #244260;\n  cursor: pointer;\n  font: inherit;\n  font-weight: 700;\n  padding: 0;\n  text-align: left;\n}\n\n.list-item p {\n  margin: 6px 0 0;\n}\n\n@media (max-width: 760px) {\n  .section-heading {\n    align-items: flex-start;\n    flex-direction: column;\n  }\n}\n"],
+  "mappings": ";AAAA,CAAC;AACC,eAAa;AACb,WAAS;AACT,OAAK;AACL,mBAAiB;AACjB,iBAAe;AACjB;AAEA,CARC,gBAQgB;AACf,UAAQ,IAAI,EAAE;AAChB;AAEA,CAAC;AACC,cAAY;AACZ,UAAQ;AACR,SAAO;AACP,UAAQ;AACR,QAAM;AACN,eAAa;AACb,WAAS;AACT,cAAY;AACd;AAEA,CAAC,UAAU;AACT,UAAQ,IAAI,EAAE;AAChB;AAEA,QAAO,WAAY;AACjB,GA5BD;AA6BG,iBAAa;AACb,oBAAgB;AAClB;AACF;",
+  "names": []
+}

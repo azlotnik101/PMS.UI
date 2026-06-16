@@ -1,0 +1,33 @@
+.section-heading {
+  align-items: center;
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.section-heading p {
+  margin: 4px 0 0;
+}
+
+.select-link {
+  background: transparent;
+  border: 0;
+  color: #244260;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 700;
+  padding: 0;
+  text-align: left;
+}
+
+.list-item p {
+  margin: 6px 0 0;
+}
+
+@media (max-width: 760px) {
+  .section-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}

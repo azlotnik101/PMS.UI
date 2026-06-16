@@ -1,0 +1,34 @@
+<main class="app-shell">
+  <header class="top-bar">
+    <div>
+      <p class="eyebrow">Participant Management System</p>
+      <h1>{{ title() }}</h1>
+    </div>
+    <span class="api-pill">API: http://localhost:5188</span>
+  </header>
+
+  <nav class="tabs" aria-label="PMS sections">
+    @for (tab of tabs; track tab.id) {
+      <button type="button" [class.active]="activeTab() === tab.id" (click)="selectTab(tab.id)">
+        {{ tab.label }}
+      </button>
+    }
+  </nav>
+
+  <section class="workspace">
+    @switch (activeTab()) {
+      @case ('questionnaires') {
+        <app-questionnaire-admin />
+      }
+      @case ('participants') {
+        <app-participant-admin />
+      }
+      @case ('assignments') {
+        <app-assignment-runner />
+      }
+      @case ('audit') {
+        <app-audit-log />
+      }
+    }
+  </section>
+</main>

@@ -1,0 +1,75 @@
+<div class="grid">
+  <section class="panel">
+    <div class="section-heading">
+      <div>
+        <h2>Participant Administration</h2>
+        <p class="muted">Manage participant records. PII encryption is handled by the API persistence layer.</p>
+      </div>
+      <button type="button" class="button secondary" (click)="newParticipant()">New</button>
+    </div>
+
+    @if (loading()) {
+      <p class="muted">Loading participants...</p>
+    }
+
+    <div class="list">
+      @for (participant of participants(); track participant.participantId) {
+        <article class="list-item" [class.selected]="selectedId() === participant.participantId">
+          <button type="button" class="select-link" (click)="selectParticipant(participant)">
+            {{ participant.firstName }} {{ participant.lastName }}
+          </button>
+          <p class="muted">{{ participant.emailAddress }} - {{ participant.participantCode }}</p>
+        </article>
+      } @empty {
+        <p class="muted">No participants yet.</p>
+      }
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>{{ isEditing() ? 'Update Participant' : 'Create Participant' }}</h2>
+
+    @if (error()) {
+      <p class="error">{{ error() }}</p>
+    }
+    @if (success()) {
+      <p class="success">{{ success() }}</p>
+    }
+
+    <div class="form-grid">
+      <div class="field">
+        <label for="firstName">First Name</label>
+        <input id="firstName" [(ngModel)]="draft().firstName">
+      </div>
+      <div class="field">
+        <label for="lastName">Last Name</label>
+        <input id="lastName" [(ngModel)]="draft().lastName">
+      </div>
+      <div class="field full">
+        <label for="emailAddress">Email Address</label>
+        <input id="emailAddress" type="email" [(ngModel)]="draft().emailAddress">
+      </div>
+      <div class="field">
+        <label for="dateOfBirth">Date of Birth</label>
+        <input id="dateOfBirth" type="date" [(ngModel)]="draft().dateOfBirth">
+      </div>
+      <div class="field">
+        <label for="startDate">Start Date</label>
+        <input id="startDate" type="date" [(ngModel)]="draft().startDate">
+      </div>
+      <div class="field full">
+        <label for="participantCode">Participant Code</label>
+        <input id="participantCode" [(ngModel)]="draft().participantCode">
+      </div>
+    </div>
+
+    <div class="actions">
+      <button type="button" class="button" [disabled]="saving()" (click)="saveParticipant()">
+        {{ saving() ? 'Saving...' : 'Save Participant' }}
+      </button>
+      @if (isEditing()) {
+        <button type="button" class="button danger" (click)="deleteSelected()">Delete</button>
+      }
+    </div>
+  </section>
+</div>
